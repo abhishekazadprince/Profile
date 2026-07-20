@@ -1,535 +1,499 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abhishek Kumar | Physics Educator & Author</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind Configuration -->
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            50: '#f0fdfa',
-                            100: '#ccfbf1',
-                            500: '#14b8a6',
-                            600: '#0d9488',
-                            900: '#134e4a',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abhishek Kumar | Physics Faculty — JEE & NEET</title>
 
-    <style>
-        /* Custom styles and animations */
-        body {
-            background-color: #0f172a; /* Slate 900 */
-            color: #e2e8f0; /* Slate 200 */
-        }
-        
-        .glass-card {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        .hover-lift {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .hover-lift:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-            border-color: rgba(20, 184, 166, 0.5); /* Brand color hint */
-        }
+<style>
+  :root{
+    --paper:#FAF9F5;
+    --paper-line:#E4DFD1;
+    --ink:#151A2D;
+    --ink-soft:#4A4F63;
+    --brass:#9C7A3C;
+    --brass-soft:#C9AD73;
+    --red:#8E2F2F;
+    --card:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    background-image:
+      linear-gradient(var(--paper-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--paper-line) 1px, transparent 1px);
+    background-size: 42px 42px;
+    background-attachment: fixed;
+  }
+  h1,h2,h3,.serif{font-family:'Source Serif 4', Georgia, serif;}
+  .mono{font-family:'IBM Plex Mono', monospace; letter-spacing:0.06em;}
+  a{text-decoration:none; color:inherit;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 24px;}
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0f172a; 
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #334155; 
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #475569; 
-        }
+  /* Eyebrow / stamped label */
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono', monospace; font-size:12px; font-weight:600;
+    letter-spacing:0.14em; text-transform:uppercase; color:var(--red);
+    border:1.5px solid var(--red); border-radius:3px; padding:4px 10px;
+    transform: rotate(-1deg);
+    background: rgba(142,47,47,0.04);
+  }
+  .rule{ height:2px; background:var(--ink); width:56px; margin:14px 0 0 0; }
+  .rule.long{ width:100%; background:var(--paper-line); height:1px; }
 
-        .gradient-text {
-            background: linear-gradient(to right, #2dd4bf, #3b82f6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-    </style>
+  /* Nav */
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(250,249,245,0.92); backdrop-filter: blur(6px);
+    border-bottom:1px solid var(--paper-line);
+  }
+  .nav-inner{ display:flex; align-items:center; justify-content:space-between; height:68px; }
+  .brand{ font-family:'Source Serif 4', serif; font-weight:700; font-size:20px; }
+  .brand span{ color:var(--brass); }
+  nav.links{ display:flex; gap:28px; font-size:14px; font-weight:500; }
+  nav.links a{ color:var(--ink-soft); transition:color .2s; padding:4px 0; border-bottom:2px solid transparent;}
+  nav.links a:hover{ color:var(--ink); border-color:var(--brass); }
+  .mobile-btn{ display:none; }
+  @media (max-width:860px){
+    nav.links{ display:none; }
+    .mobile-btn{ display:block; font-size:20px; }
+  }
+
+  /* Hero */
+  .hero{ padding:76px 0 60px; }
+  .hero-grid{ display:grid; grid-template-columns:1.35fr 0.85fr; gap:56px; align-items:center; }
+  @media (max-width:860px){ .hero-grid{ grid-template-columns:1fr; } }
+  .hero h1{ font-size:46px; line-height:1.12; font-weight:700; margin:14px 0 10px; }
+  .hero .role-line{ font-size:19px; color:var(--ink-soft); margin-bottom:20px; }
+  .hero p.lead{ font-size:16px; line-height:1.7; color:var(--ink-soft); max-width:56ch; }
+  .stat-row{ display:flex; gap:34px; margin-top:28px; flex-wrap:wrap; }
+  .stat b{ display:block; font-family:'Source Serif 4',serif; font-size:28px; color:var(--ink); }
+  .stat span{ font-size:12px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.08em; }
+  .cta-row{ display:flex; gap:14px; margin-top:32px; flex-wrap:wrap; }
+  .btn{ display:inline-flex; align-items:center; gap:8px; font-size:14px; font-weight:600; padding:12px 20px; border-radius:3px; transition:.2s; }
+  .btn-primary{ background:var(--ink); color:#fff; }
+  .btn-primary:hover{ background:var(--brass); }
+  .btn-outline{ border:1.5px solid var(--ink); color:var(--ink); }
+  .btn-outline:hover{ background:var(--ink); color:#fff; }
+
+  .photo-frame{ position:relative; }
+  .photo-card{
+    background:var(--card); border:1px solid var(--paper-line); padding:14px;
+    box-shadow:8px 8px 0 var(--brass-soft);
+  }
+  .photo-card img{ width:100%; display:block; filter:grayscale(12%); }
+  .photo-caption{ font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft); margin-top:10px; text-align:center; letter-spacing:.04em;}
+
+  section{ padding:56px 0; }
+  .section-head{ margin-bottom:34px; }
+  .section-head h2{ font-size:30px; font-weight:700; margin:10px 0 0; }
+  .section-head p{ color:var(--ink-soft); max-width:64ch; margin-top:10px; font-size:15px; line-height:1.6; }
+
+  /* Approach / highlight cards */
+  .approach-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  @media (max-width:860px){ .approach-grid{ grid-template-columns:1fr; } }
+  .approach-card{ background:var(--card); border:1px solid var(--paper-line); padding:26px 22px; position:relative; }
+  .approach-card .num{ font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--brass); font-weight:600; }
+  .approach-card h3{ font-size:18px; margin:10px 0 8px; }
+  .approach-card p{ font-size:13.5px; color:var(--ink-soft); line-height:1.6; margin:0; }
+  .check{ position:absolute; top:20px; right:18px; color:var(--red); font-size:18px; transform:rotate(-8deg); opacity:.85;}
+
+  /* Timeline */
+  .tl{ position:relative; padding-left:30px; border-left:2px solid var(--ink); }
+  .tl-item{ position:relative; padding-bottom:34px; }
+  .tl-item:last-child{ padding-bottom:0; }
+  .tl-item::before{ content:''; position:absolute; left:-38px; top:4px; width:14px; height:14px; border-radius:50%; background:var(--paper); border:2.5px solid var(--ink); }
+  .tl-item.current::before{ background:var(--red); border-color:var(--red); }
+  .tl-title{ font-size:17px; font-weight:700; font-family:'Source Serif 4',serif; }
+  .tl-stamp{ display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:10.5px; font-weight:600; color:#fff; background:var(--red); padding:2px 8px; border-radius:2px; margin-left:10px; transform:rotate(-3deg); vertical-align:middle; }
+  .tl-meta{ font-size:13.5px; color:var(--ink-soft); margin-top:3px; }
+  .tl-desc{ font-size:13.5px; color:var(--ink-soft); margin-top:8px; line-height:1.65; max-width:64ch; }
+  .tl-desc b{ color:var(--ink); }
+
+  /* Subjects / skills */
+  .subject-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+  @media (max-width:700px){ .subject-grid{ grid-template-columns:repeat(2,1fr);} }
+  .subject-pill{ background:var(--card); border:1px solid var(--paper-line); padding:14px 16px; font-size:13.5px; font-weight:600; display:flex; align-items:center; gap:10px; }
+  .subject-pill i{ color:var(--brass); font-size:14px; }
+
+  .toolkit-box{ margin-top:30px; background:#14192B; color:#EDE9DD; padding:26px 28px; border:1px solid var(--paper-line); }
+  .toolkit-box .eyebrow2{ font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--brass-soft); }
+  .toolkit-box h4{ font-family:'Source Serif 4',serif; font-size:19px; margin:8px 0 10px; color:#fff; }
+  .toolkit-box p{ font-size:13.5px; color:#C7C3B4; line-height:1.65; max-width:66ch; margin:0 0 16px; }
+  .toolkit-pills{ display:flex; flex-wrap:wrap; gap:8px; }
+  .toolkit-pills span{ font-size:12px; font-family:'IBM Plex Mono',monospace; border:1px solid #3A4058; padding:5px 10px; color:#EDE9DD; }
+
+  /* Education */
+  .edu-grid{ display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+  @media (max-width:860px){ .edu-grid{ grid-template-columns:1fr; } }
+  .edu-card{ background:var(--card); border:1px solid var(--paper-line); padding:24px; }
+  .edu-card h4{ font-size:16px; margin:0 0 4px; }
+  .edu-card .meta{ font-size:13px; color:var(--ink-soft); line-height:1.6; }
+  .mentor-note{ margin-top:18px; padding:16px 18px; border-left:3px solid var(--brass); background:rgba(156,122,60,0.06); font-size:13px; color:var(--ink-soft); line-height:1.65; }
+  .mentor-note b{ color:var(--ink); }
+
+  /* Books */
+  .book-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  @media (max-width:860px){ .book-grid{ grid-template-columns:1fr; } }
+  .book-card{ background:var(--card); border:1px solid var(--paper-line); }
+  .book-spine{ height:120px; display:flex; align-items:center; justify-content:center; text-align:center; padding:14px; border-bottom:1px solid var(--paper-line); }
+  .book-spine i{ font-size:26px; color:var(--brass); margin-bottom:8px; display:block; }
+  .book-spine h5{ font-size:14.5px; font-family:'Source Serif 4',serif; margin:0; }
+  .book-body{ padding:18px 18px 20px; }
+  .book-body p{ font-size:12.5px; color:var(--ink-soft); line-height:1.6; margin:0 0 14px; }
+  .book-links a{ display:block; font-size:12.5px; font-weight:600; padding:8px 10px; border:1px solid var(--paper-line); margin-bottom:6px; text-align:center; }
+  .book-links a:hover{ background:var(--ink); color:#fff; }
+
+  .library-grid{ margin-top:26px; display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+  @media (max-width:700px){ .library-grid{ grid-template-columns:repeat(2,1fr);} }
+  .library-grid a{ font-size:12.5px; border:1px solid var(--paper-line); background:var(--card); padding:11px 12px; display:flex; align-items:center; gap:8px; }
+  .library-grid a:hover{ border-color:var(--brass); color:var(--brass); }
+
+  /* Videos */
+  .video-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
+  @media (max-width:860px){ .video-grid{ grid-template-columns:1fr; } }
+  .video-card{ background:var(--card); border:1px solid var(--paper-line); padding:8px; }
+  .video-card iframe{ width:100%; aspect-ratio:16/9; display:block; border:0; }
+
+  /* Simulations */
+  .sim-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+  @media (max-width:860px){ .sim-grid{ grid-template-columns:repeat(2,1fr);} }
+  .sim-card{ background:var(--card); border:1px solid var(--paper-line); padding:18px; transition:.2s; }
+  .sim-card:hover{ border-color:var(--brass); transform:translateY(-2px); }
+  .sim-card i{ color:var(--brass); font-size:18px; }
+  .sim-card h5{ font-size:13.5px; margin:10px 0 6px; }
+  .sim-card p{ font-size:11.5px; color:var(--ink-soft); line-height:1.5; margin:0; }
+
+  footer{ background:var(--ink); color:#C7C3B4; padding:44px 0 28px; margin-top:20px; }
+  .foot-grid{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px; align-items:flex-start; }
+  footer .brand2{ color:#fff; font-family:'Source Serif 4',serif; font-size:20px; }
+  .foot-links a{ display:inline-flex; width:38px; height:38px; align-items:center; justify-content:center; border:1px solid #3A4058; margin-right:8px; border-radius:50%; }
+  .foot-links a:hover{ background:var(--brass); border-color:var(--brass); color:#14192B; }
+  .foot-bottom{ margin-top:30px; padding-top:20px; border-top:1px solid #2A3049; font-size:12px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+</style>
 </head>
-<body class="antialiased selection:bg-brand-500 selection:text-white">
+<body>
 
-    <nav class="fixed w-full z-50 glass-card border-b-0 border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex-shrink-0 flex items-center gap-2">
-                    <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-brand-500 to-blue-500 flex items-center justify-center font-bold text-white">AK</div>
-                    <span class="font-bold text-xl tracking-tight">Abhishek Kumar</span>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-6">
-                        <a href="#about" class="hover:text-brand-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
-                        <a href="#experience" class="hover:text-brand-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">Experience</a>
-                        <a href="#simulations" class="hover:text-brand-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">Simulations</a>
-                        <a href="#publications" class="hover:text-brand-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">Publications</a>
-                        <a href="#videos" class="hover:text-brand-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">Lectures</a>
-                    </div>
-                </div>
-                <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none">
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-slate-800 border-t border-slate-700">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#about" class="block hover:bg-slate-700 px-3 py-2 rounded-md text-base font-medium">About</a>
-                <a href="#experience" class="block hover:bg-slate-700 px-3 py-2 rounded-md text-base font-medium">Experience</a>
-                <a href="#simulations" class="block hover:bg-slate-700 px-3 py-2 rounded-md text-base font-medium">Simulations</a>
-                <a href="#publications" class="block hover:bg-slate-700 px-3 py-2 rounded-md text-base font-medium">Publications</a>
-                <a href="#videos" class="block hover:bg-slate-700 px-3 py-2 rounded-md text-base font-medium">Lectures</a>
-            </div>
-        </div>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <div class="brand">Abhishek Kumar <span>·</span> <span style="font-size:14px; font-weight:500; color:var(--ink-soft);">Physics Faculty</span></div>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#subjects">Subjects</a>
+      <a href="#books">Publications</a>
+      <a href="#lectures">Lectures</a>
+      <a href="#simulations">Simulations</a>
+      <a href="#contact">Contact</a>
     </nav>
+    <div class="mobile-btn"><i class="fas fa-bars"></i></div>
+  </div>
+</header>
 
-    <section id="hero" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center gap-12 min-h-[90vh] justify-center">
-        <div class="flex-1 text-center md:text-left">
-            <h2 class="text-brand-500 font-semibold tracking-wide uppercase text-sm mb-2">Physics Faculty • Author • Developer</h2>
-            <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white mb-6 leading-tight">
-                Hi, I'm <span class="gradient-text">Abhishek</span><br> Kumar.
-            </h1>
-            <p class="text-lg text-slate-400 mb-8 max-w-2xl mx-auto md:mx-0">
-                With over 10 years of experience teaching JEE and NEET Physics, I emphasize conceptual understanding, mathematical rigor, and logical reasoning. I bridge the gap between abstract physics concepts and interactive computational simulations.
-            </p>
-            
-            <div class="flex flex-wrap justify-center md:justify-start gap-4 mb-8">
-                <a href="#simulations" class="bg-brand-600 hover:bg-brand-500 text-white px-6 py-3 rounded-lg font-medium transition-colors shadow-lg shadow-brand-500/30">
-                    <i class="fas fa-laptop-code mr-2"></i> View Simulations
-                </a>
-                <a href="#publications" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white px-6 py-3 rounded-lg font-medium transition-colors">
-                    <i class="fas fa-book mr-2"></i> My Books
-                </a>
-            </div>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">JEE / NEET Physics Faculty</span>
+      <h1>Abhishek Kumar</h1>
+      <div class="role-line">10+ years building conceptual clarity for competitive-exam Physics</div>
+      <p class="lead">I teach Mechanics, Electrodynamics, Thermodynamics, Optics and Modern Physics to JEE and NEET aspirants — with a B.Tech (Computer Science &amp; Engineering) background that lets me turn abstract theory into interactive, visual, problem-solving practice. Author of three physics books; creator of ad-free video lectures and original physics simulations.</p>
+      <div class="stat-row">
+        <div class="stat"><b>10+</b><span>Years Teaching</span></div>
+        <div class="stat"><b>9</b><span>Institutes, 6 States</span></div>
+        <div class="stat"><b>3</b><span>Published Books</span></div>
+        <div class="stat"><b>10+</b><span>Physics Simulations Built</span></div>
+      </div>
+      <div class="cta-row">
+        <a href="#experience" class="btn btn-primary"><i class="fas fa-briefcase"></i> View Experience</a>
+        <a href="#contact" class="btn btn-outline"><i class="fas fa-paper-plane"></i> Get In Touch</a>
+      </div>
+    </div>
+    <div class="photo-frame">
+      <div class="photo-card">
+        <img src="profile.jpg" alt="Abhishek Kumar" onerror="this.src='https://ui-avatars.com/api/?name=Abhishek+Kumar&size=512&background=151A2D&color=EDE9DD'">
+      </div>
+      <div class="photo-caption">PATNA · BIHAR &nbsp;|&nbsp; PHYSICS FACULTY</div>
+    </div>
+  </div>
+</section>
 
-            <div class="flex justify-center md:justify-start gap-6 text-2xl text-slate-400">
-                <a href="https://in.linkedin.com/in/abhishek-azad-prince-6a520a60" target="_blank" class="hover:text-blue-500 transition-colors" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="https://youtube.com/@sciencenphilosophy?si=0YMVENjplc_oDzoD" target="_blank" class="hover:text-red-500 transition-colors" title="YouTube"><i class="fab fa-youtube"></i></a>
-                <a href="https://github.com/abhishekazadprince" target="_blank" class="hover:text-white transition-colors" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="mailto:abhishekazadprince@gmail.com" class="hover:text-brand-500 transition-colors" title="Email"><i class="fas fa-envelope"></i></a>
-            </div>
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Why Institutes Choose Me</span>
+      <h2>A decade of results-driven Physics coaching</h2>
+      <p>Across nine institutes and six states — from Kota-linked coaching chains to CBSE senior-secondary classrooms — my focus has stayed constant: build airtight conceptual foundations, then drill exam-specific problem solving until it's instinctive.</p>
+    </div>
+    <div class="approach-grid">
+      <div class="approach-card">
+        <span class="check"><i class="fas fa-check"></i></span>
+        <div class="num">01</div>
+        <h3>Pan-India Exam Exposure</h3>
+        <p>Taught JEE/NEET batches in Bihar, Maharashtra, Tamil Nadu, Arunachal Pradesh, Madhya Pradesh and Uttar Pradesh — adapting to every board pattern and student level along the way.</p>
+      </div>
+      <div class="approach-card">
+        <span class="check"><i class="fas fa-check"></i></span>
+        <div class="num">02</div>
+        <h3>Published Author</h3>
+        <p>Authored three physics titles — on gravity &amp; planetary motion, relativity, and quantum field theory — available on Amazon, Flipkart and Google Play.</p>
+      </div>
+      <div class="approach-card">
+        <span class="check"><i class="fas fa-check"></i></span>
+        <div class="num">03</div>
+        <h3>Simulation-Backed Teaching</h3>
+        <p>Built original Python/HTML physics simulations — mechanics, waves, quantum basics — that turn textbook derivations into something students can see and manipulate.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience" style="background:var(--card); border-top:1px solid var(--paper-line); border-bottom:1px solid var(--paper-line);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Career Timeline</span>
+      <h2>Work Experience</h2>
+    </div>
+    <div class="tl">
+
+      <div class="tl-item current">
+        <div class="tl-title">Physics Faculty <span class="tl-stamp">CURRENT</span></div>
+        <div class="tl-meta">Sanjay Ghodawat Group of Institutions · Atigre, Kolhapur, Maharashtra · 2026 – Present</div>
+        <div class="tl-desc">Leading JEE/NEET-oriented Physics instruction at one of Maharashtra's fast-growing competitive-exam campuses, for the <b>Foundation Programme (Classes 9–10)</b> — laying the exact conceptual groundwork and problem-solving discipline that senior JEE/NEET batches are built on, before students step into +2.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-title">Physics Faculty (CBSE)</div>
+        <div class="tl-meta">Seth M.R. Jaipuria School · Patna, Bihar · 2024</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-title">Physics Faculty</div>
+        <div class="tl-meta">S.P. Mandali's I.P.E. Centre, S.P. College · Tilak Road, Pune, Maharashtra · 2023</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-title">Faculty</div>
+        <div class="tl-meta">Planet Media Publishing Pvt. Ltd. · Mumbai / Campion School, Bhopal · 2022</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-title">Physics Faculty</div>
+        <div class="tl-meta">Notion Tutorials &amp; Galaxy School · Nirjuli, Arunachal Pradesh · 2021</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-title">Physics Faculty</div>
+        <div class="tl-meta">Score Academy · Tirupur, Coimbatore, Tamil Nadu · 2020</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-title">Physics Faculty</div>
+        <div class="tl-meta">Vision Classes · Naya Tola, Patna, Bihar · 2019</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-title">Faculty</div>
+        <div class="tl-meta">Career Point (Kota) · Lucknow, Uttar Pradesh · 2018</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-title">Physics Faculty</div>
+        <div class="tl-meta">Lakshya International School · Nagda, Ujjain, Madhya Pradesh · 2017</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="subjects">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Answer Sheet</span>
+      <h2>Subjects &amp; Expertise</h2>
+    </div>
+    <div class="subject-grid">
+      <div class="subject-pill"><i class="fas fa-check-double"></i> JEE Advanced Physics</div>
+      <div class="subject-pill"><i class="fas fa-check-double"></i> NEET Physics</div>
+      <div class="subject-pill"><i class="fas fa-check-double"></i> Mechanics</div>
+      <div class="subject-pill"><i class="fas fa-check-double"></i> Electrodynamics</div>
+      <div class="subject-pill"><i class="fas fa-check-double"></i> Thermodynamics</div>
+      <div class="subject-pill"><i class="fas fa-check-double"></i> Optics</div>
+      <div class="subject-pill"><i class="fas fa-check-double"></i> Modern Physics</div>
+      <div class="subject-pill"><i class="fas fa-check-double"></i> Foundation (IX–X) Physics</div>
+      <div class="subject-pill"><i class="fas fa-check-double"></i> CBSE Senior Secondary Physics</div>
+    </div>
+
+    <div class="toolkit-box">
+      <div class="eyebrow2">THE ENGINEERING EDGE</div>
+      <h4>A Computer Science background, put to work in the classroom</h4>
+      <p>My B.Tech in Computer Science &amp; Engineering isn't a separate track — it's what lets me build the simulations, LaTeX-typeset content and computational tools that make my Physics teaching sharper. It's also the reason institutes occasionally bring me in for scientific-computing or logic-building sessions alongside core Physics.</p>
+      <div class="toolkit-pills">
+        <span>Python (Scientific Computing)</span>
+        <span>LaTeX</span>
+        <span>Maxima</span>
+        <span>C / OpenGL</span>
+        <span>HTML/CSS/JS Simulations</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--card); border-top:1px solid var(--paper-line); border-bottom:1px solid var(--paper-line);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Foundation</span>
+      <h2>Education</h2>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <h4>B.Tech, Computer Science &amp; Engineering</h4>
+        <div class="meta">Birbhum Institute of Engineering &amp; Technology, Calcutta<br>WBUT, 2012</div>
+      </div>
+      <div class="edu-card">
+        <h4>Intermediate (12th – PCM) &amp; Matriculation (10th)</h4>
+        <div class="meta">Rammohun Roy Seminary, Khazanchi Road, Patna — 2009, 70%<br>G.A. High School, Arwal — 2006, 72%</div>
+      </div>
+    </div>
+    <div class="mentor-note">
+      During Higher Secondary (+2), I was mentored by eminent Patna-based educators — <b>S.K. Sinha</b>, <b>Vikash Rahi</b>, <b>K. Singh</b> and <b>Uday Raj</b> — whose guidance laid the conceptual foundation that still shapes how I teach Physics and scientific computing today.
+    </div>
+  </div>
+</section>
+
+<section id="books">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Published Works</span>
+      <h2>Books &amp; Publications</h2>
+      <p>Three physics titles spanning classical mechanics to quantum field theory, available across Amazon, Flipkart, Google Play and Pothi.</p>
+    </div>
+    <div class="book-grid">
+      <div class="book-card">
+        <div class="book-spine"><i class="fas fa-globe"></i><h5>Gravity — Planetary Motion</h5></div>
+        <div class="book-body">
+          <p>Celestial mechanics, Newtonian gravity and the laws governing planetary orbits.</p>
+          <div class="book-links">
+            <a href="https://www.amazon.in/Gravity-Planetary-Motion-Abhishek-Kumar/dp/B09PH6292K" target="_blank"><i class="fab fa-amazon"></i> Amazon India</a>
+            <a href="https://dl.flipkart.com/dl/gravity-planetary-motion/p/itm84b6b08e673e0?_refId=&_appId=CL" target="_blank"><i class="fas fa-shopping-cart"></i> Flipkart</a>
+          </div>
         </div>
-        
-        <div class="flex-1 w-full max-w-md relative">
-            <div class="aspect-square rounded-full bg-gradient-to-br from-brand-900 to-blue-900 flex items-center justify-center p-2 relative overflow-hidden shadow-2xl">
-                <!-- 
-                    HOW TO UPLOAD YOUR PHOTO:
-                    1. Name your photo file exactly "profile.jpg" (ensure it is a .jpg image).
-                    2. Upload it directly into the same GitHub folder where this index.html file is located.
-                    3. The website will automatically display it. If the image isn't found, it defaults to the initials avatar.
-                -->
-                <img src="profile.jpg" alt="Abhishek Kumar" class="w-full h-full object-cover rounded-full shadow-inner border-4 border-slate-800" onerror="this.src='https://ui-avatars.com/api/?name=Abhishek+Kumar&size=512&background=0d9488&color=fff'">
-            </div>
+      </div>
+      <div class="book-card">
+        <div class="book-spine"><i class="fas fa-rocket"></i><h5>Relativity — Speed of Light</h5></div>
+        <div class="book-body">
+          <p>Einstein's postulates, time dilation, length contraction and near-light-speed travel.</p>
+          <div class="book-links">
+            <a href="https://www.amazon.in/Relativity-Speed-light-Abhishek-Kumar/dp/B09W36BNKK" target="_blank"><i class="fab fa-amazon"></i> Amazon India</a>
+            <a href="https://dl.flipkart.com/dl/relativity/p/itm08f1945c422cf?_refId=&_appId=CL" target="_blank"><i class="fas fa-shopping-cart"></i> Flipkart</a>
+          </div>
         </div>
-    </section>
-
-    <section id="about" class="py-20 bg-slate-900 border-t border-slate-800 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-12 text-center">
-                <h2 class="text-3xl font-bold text-white mb-4">About Me</h2>
-                <div class="w-20 h-1 bg-brand-500 mx-auto rounded-full"></div>
-            </div>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <div>
-                    <h3 class="text-2xl font-semibold mb-4 text-white">Professional Background</h3>
-                    <p class="text-slate-400 mb-4 leading-relaxed">
-                        I am a dedicated Physics educator with an engineering background in Computer Science & Engineering. I specialize in teaching Mechanics, Electrodynamics, Thermodynamics, Optics, and Modern Physics for competitive exams like JEE and NEET.
-                    </p>
-                    <p class="text-slate-400 mb-6 leading-relaxed">
-                        My approach blends theoretical clarity with scientific computing. I actively use Python, MATLAB, and interactive HTML simulations to visually demonstrate complex physical phenomena, making learning immersive and deeply fundamental.
-                    </p>
-                    
-                    <div class="bg-slate-800 p-6 rounded-xl border border-slate-700">
-                        <h4 class="font-semibold text-white mb-2"><i class="fas fa-graduation-cap text-brand-500 mr-2"></i>Education</h4>
-                        <ul class="text-slate-400 space-y-2 text-sm">
-                            <li><strong>B.Tech in Computer Science & Engineering</strong> - Birbhum Institute of Eng. & Tech., Kolkata (2012)</li>
-                            <li><strong>Intermediate (12th - PCM)</strong> - Rammohun Roy Seminary, Patna (2009)</li>
-                            <li><strong>Matriculation (10th)</strong> - G.A. High School, Arwal (2006)</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div>
-                    <h3 class="text-2xl font-semibold mb-6 text-white">Skills & Expertise</h3>
-                    <div class="space-y-6">
-                        <div>
-                            <h4 class="text-sm uppercase tracking-wider text-slate-500 mb-3">Teaching Domain</h4>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-blue-900/40 text-blue-300 rounded border border-blue-800/50 text-sm">JEE Advanced</span>
-                                <span class="px-3 py-1 bg-blue-900/40 text-blue-300 rounded border border-blue-800/50 text-sm">NEET Physics</span>
-                                <span class="px-3 py-1 bg-blue-900/40 text-blue-300 rounded border border-blue-800/50 text-sm">Mechanics</span>
-                                <span class="px-3 py-1 bg-blue-900/40 text-blue-300 rounded border border-blue-800/50 text-sm">Electrodynamics</span>
-                                <span class="px-3 py-1 bg-blue-900/40 text-blue-300 rounded border border-blue-800/50 text-sm">Modern Physics</span>
-                                <span class="px-3 py-1 bg-blue-900/40 text-blue-300 rounded border border-blue-800/50 text-sm">Optics</span>
-                            </div>
-                        </div>
-                        <div>
-                            <h4 class="text-sm uppercase tracking-wider text-slate-500 mb-3">Technical & Computing</h4>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-brand-900/40 text-brand-300 rounded border border-brand-800/50 text-sm">Python (Scientific)</span>
-                                <span class="px-3 py-1 bg-brand-900/40 text-brand-300 rounded border border-brand-800/50 text-sm">MATLAB</span>
-                                <span class="px-3 py-1 bg-brand-900/40 text-brand-300 rounded border border-brand-800/50 text-sm">LaTeX</span>
-                                <span class="px-3 py-1 bg-brand-900/40 text-brand-300 rounded border border-brand-800/50 text-sm">Maxima</span>
-                                <span class="px-3 py-1 bg-brand-900/40 text-brand-300 rounded border border-brand-800/50 text-sm">C / OpenGL</span>
-                                <span class="px-3 py-1 bg-brand-900/40 text-brand-300 rounded border border-brand-800/50 text-sm">HTML/CSS/JS (Simulations)</span>
-                            </div>
-                        </div>
-                        <div>
-                            <h4 class="text-sm uppercase tracking-wider text-slate-500 mb-3">Content Creation</h4>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-purple-900/40 text-purple-300 rounded border border-purple-800/50 text-sm">Book Writing</span>
-                                <span class="px-3 py-1 bg-purple-900/40 text-purple-300 rounded border border-purple-800/50 text-sm">Video Lectures</span>
-                                <span class="px-3 py-1 bg-purple-900/40 text-purple-300 rounded border border-purple-800/50 text-sm">Course Structuring</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="book-card">
+        <div class="book-spine"><i class="fas fa-atom"></i><h5>Quantum Field Theory (Vol. 3)</h5></div>
+        <div class="book-body">
+          <p>Advanced mathematical formulation of QFT — quantum electrodynamics and particle interactions.</p>
+          <div class="book-links">
+            <a href="https://www.amazon.in/Quantum-Field-Theory-Abhishek-Kumar/dp/B0F5NVR1VY" target="_blank"><i class="fab fa-amazon"></i> Amazon India</a>
+            <a href="https://store.pothi.com/book/abhishek-kumar-quantum-field-theory-3/" target="_blank"><i class="fas fa-book-open"></i> Pothi Store</a>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <section id="experience" class="py-20 bg-slate-800 border-t border-slate-700">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-12 text-center">
-                <h2 class="text-3xl font-bold text-white mb-4">Work Experience</h2>
-                <div class="w-20 h-1 bg-brand-500 mx-auto rounded-full"></div>
-            </div>
+    <div class="library-grid">
+      <a href="https://play.google.com/store/books/details?id=IwHXEQAAQBAJ" target="_blank"><i class="fab fa-google-play"></i> Google Play E-Book 1</a>
+      <a href="https://play.google.com/store/books/details?id=fKdbEQAAQBAJ" target="_blank"><i class="fab fa-google-play"></i> Google Play E-Book 2</a>
+      <a href="https://play.google.com/store/books/details?id=retaEQAAQBAJ" target="_blank"><i class="fab fa-google-play"></i> Google Play E-Book 3</a>
+      <a href="https://play.google.com/store/books/details?id=dINYEQAAQBAJ" target="_blank"><i class="fab fa-google-play"></i> Google Play E-Book 4</a>
+      <a href="https://play.google.com/store/books/details?id=n5teEAAAQBAJ" target="_blank"><i class="fab fa-google-play"></i> Google Play E-Book 5</a>
+      <a href="https://play.google.com/store/audiobooks/details?id=AQAAAEBKtTT1bM" target="_blank"><i class="fas fa-headphones"></i> Audiobook 1</a>
+      <a href="https://play.google.com/store/audiobooks/details?id=AQAAAEBKaVwpBM" target="_blank"><i class="fas fa-headphones"></i> Audiobook 2</a>
+      <a href="https://amzn.in/d/hCAUILC" target="_blank"><i class="fab fa-amazon"></i> Amazon E-Book</a>
+    </div>
+  </div>
+</section>
 
-            <div class="relative border-l border-slate-600 ml-3 md:ml-0 md:border-l-2">
-                
-                <div class="mb-10 ml-6 md:ml-10">
-                    <span class="absolute flex items-center justify-center w-6 h-6 bg-brand-500 rounded-full -left-3 md:-left-3 ring-8 ring-slate-800">
-                        <i class="fas fa-briefcase text-white text-xs"></i>
-                    </span>
-                    <h3 class="flex items-center mb-1 text-lg font-semibold text-white">Physics Faculty <span class="bg-blue-900 text-blue-300 text-xs font-medium mr-2 px-2.5 py-0.5 rounded ml-3">Current</span></h3>
-                    <time class="block mb-2 text-sm font-normal leading-none text-slate-400">Jan 2026 - Present | Sanjay Ghodawat Group of Institutions (Kolhapur)</time>
-                    <p class="mb-4 text-base font-normal text-slate-400">Instructing competitive physics batches.</p>
-                </div>
+<section id="lectures" style="background:var(--card); border-top:1px solid var(--paper-line); border-bottom:1px solid var(--paper-line);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">On Camera</span>
+      <h2>Video Lectures</h2>
+      <p>Ad-free lectures produced and delivered directly to students, in both Hindi and English.</p>
+    </div>
+    <h4 style="font-size:14px; margin:0 0 14px;"><i class="fas fa-language" style="color:var(--brass); margin-right:6px;"></i>Lectures in Hindi</h4>
+    <div class="video-grid" style="margin-bottom:36px;">
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/OSpU_nuSSQQ?rel=0&modestbranding=1" allowfullscreen></iframe></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/FzBTUK1d3qk?rel=0&modestbranding=1" allowfullscreen></iframe></div>
+    </div>
+    <h4 style="font-size:14px; margin:0 0 14px;"><i class="fas fa-language" style="color:var(--brass); margin-right:6px;"></i>Lectures in English</h4>
+    <div class="video-grid">
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/r2mqIsHD89s?rel=0&modestbranding=1" allowfullscreen></iframe></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/Ky3MqGzGj1k?rel=0&modestbranding=1" allowfullscreen></iframe></div>
+    </div>
+    <div style="margin-top:24px;">
+      <a href="https://youtube.com/@sciencenphilosophy" target="_blank" class="btn btn-outline"><i class="fab fa-youtube"></i> Subscribe to Channel</a>
+    </div>
+  </div>
+</section>
 
-                <div class="mb-10 ml-6 md:ml-10">
-                    <span class="absolute flex items-center justify-center w-6 h-6 bg-slate-600 rounded-full -left-3 md:-left-3 ring-8 ring-slate-800"></span>
-                    <h3 class="mb-1 text-lg font-semibold text-white">Physics Faculty (CBSE)</h3>
-                    <time class="block mb-2 text-sm font-normal leading-none text-slate-400">Jan 2024 - Dec 2024 | Seth M.R. Jaipuria School (Patna)</time>
-                </div>
+<section id="simulations">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Lab Notebook</span>
+      <h2>Simulations &amp; Interactive Tools</h2>
+      <p>Original HTML/Python simulations built to make abstract Physics and Mathematics tangible — the same computing background that supports my classroom teaching.</p>
+    </div>
+    <div class="sim-grid">
+      <a class="sim-card" href="https://abhishekazadprince.github.io/KalaSimX/" target="_blank"><i class="fas fa-cube"></i><h5>KalaSimX</h5><p>Interactive physics models and engine.</p></a>
+      <a class="sim-card" href="https://abhishekazadprince.github.io/Physics-/" target="_blank"><i class="fas fa-globe"></i><h5>Planetary Motion</h5><p>Simulations of planetary orbits and core mechanics.</p></a>
+      <a class="sim-card" href="https://abhishekazadprince.github.io/wave/" target="_blank"><i class="fas fa-water"></i><h5>Wave Mechanics</h5><p>Interactive wave propagation &amp; interference.</p></a>
+      <a class="sim-card" href="https://abhishekazadprince.github.io/quantum/" target="_blank"><i class="fas fa-bolt"></i><h5>Quantum Basics</h5><p>Introductory quantum mechanics visualizer.</p></a>
+      <a class="sim-card" href="https://abhishekazadprince.github.io/Calculus/" target="_blank"><i class="fas fa-chart-area"></i><h5>Calculus Concepts</h5><p>Visualizing limits, derivatives and integrals.</p></a>
+      <a class="sim-card" href="https://abhishekazadprince.github.io/Vector/" target="_blank"><i class="fas fa-arrows-alt"></i><h5>Vector Algebra</h5><p>3D vector operations and transformations.</p></a>
+      <a class="sim-card" href="https://abhishekazadprince.github.io/Circle/" target="_blank"><i class="fas fa-circle-notch"></i><h5>Circle Geometries</h5><p>Coordinate geometry and loci visualization.</p></a>
+      <a class="sim-card" href="https://abhishekazadprince.github.io/delay/" target="_blank"><i class="fas fa-stopwatch"></i><h5>Delay Systems</h5><p>Simulation of time-delay systems.</p></a>
+    </div>
+  </div>
+</section>
 
-                <div class="mb-10 ml-6 md:ml-10">
-                    <span class="absolute flex items-center justify-center w-6 h-6 bg-slate-600 rounded-full -left-3 md:-left-3 ring-8 ring-slate-800"></span>
-                    <h3 class="mb-1 text-lg font-semibold text-white">Physics Faculty (JEE/NEET)</h3>
-                    <time class="block mb-2 text-sm font-normal leading-none text-slate-400">Jan 2023 - Dec 2023 | S.P. Mandali's I.P.E. Centre, S.P. College (Pune)</time>
-                </div>
-
-                <div class="mb-10 ml-6 md:ml-10">
-                    <span class="absolute flex items-center justify-center w-6 h-6 bg-slate-600 rounded-full -left-3 md:-left-3 ring-8 ring-slate-800"></span>
-                    <h3 class="mb-1 text-lg font-semibold text-white">Faculty & Content Writer</h3>
-                    <time class="block mb-2 text-sm font-normal leading-none text-slate-400">2021 - 2022 | Planet Media Publishing / Chegg / Brainly</time>
-                    <p class="text-base font-normal text-slate-400">Authored solutions for complex physics problems, structured online courses, and delivered combined JEE/NEET instruction.</p>
-                </div>
-
-                <div class="ml-6 md:ml-10">
-                    <span class="absolute flex items-center justify-center w-6 h-6 bg-slate-600 rounded-full -left-3 md:-left-3 ring-8 ring-slate-800"></span>
-                    <h3 class="mb-1 text-lg font-semibold text-white">Previous Academic Roles</h3>
-                    <time class="block mb-2 text-sm font-normal leading-none text-slate-400">2017 - 2021</time>
-                    <p class="text-base font-normal text-slate-400">
-                        Served as Physics Faculty at various esteemed institutions including Notion Tutorials (Arunachal Pradesh), Score Academy (Coimbatore), Lakshya International School (Ujjain), Vision Classes (Patna), and Career Point (Lucknow).
-                    </p>
-                </div>
-
-            </div>
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand2">Abhishek Kumar</div>
+        <div style="font-size:13px; margin-top:4px; color:#9B97A8;">Physics Faculty — JEE &amp; NEET</div>
+        <div style="margin-top:16px; font-size:13px; line-height:1.9;">
+          <div><i class="fas fa-envelope" style="width:16px; color:var(--brass-soft);"></i> abhishekazadprince@gmail.com</div>
+          <div><i class="fas fa-phone" style="width:16px; color:var(--brass-soft);"></i> +91 98018 74343</div>
+          <div><i class="fas fa-location-dot" style="width:16px; color:var(--brass-soft);"></i> Kusumpuram Colony, Bailey Road, Patna, Bihar – 801503</div>
         </div>
-    </section>
-
-    <section id="simulations" class="py-20 bg-slate-900 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-12 text-center">
-                <h2 class="text-3xl font-bold text-white mb-4">Interactive Web Simulations & E-Books</h2>
-                <p class="text-slate-400 max-w-2xl mx-auto">A collection of HTML-based interactive simulations and online books hosted on GitHub Pages, designed to make abstract mathematical and physical concepts tangible.</p>
-                <div class="w-20 h-1 bg-brand-500 mx-auto rounded-full mt-6"></div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                <!-- Generating Cards for GitHub Links via JavaScript -->
-                <script>
-                    // Updated titles and descriptions based on user specifications
-                    const repos = [
-                        { name: 'KalaSimX', url: 'https://abhishekazadprince.github.io/KalaSimX/', icon: 'fa-cube', desc: 'Interactive physics models and engine.' },
-                        { name: 'Planetary Motion & Physics', url: 'https://abhishekazadprince.github.io/Physics-/', icon: 'fa-globe', desc: 'Simulations related to planetary orbits and core physics concepts.' },
-                        { name: 'Delay Systems', url: 'https://abhishekazadprince.github.io/delay/', icon: 'fa-stopwatch', desc: 'Simulation of time-delay systems.' },
-                        { name: 'Wave Mechanics', url: 'https://abhishekazadprince.github.io/wave/', icon: 'fa-water', desc: 'Interactive wave propagation & interference.' },
-                        { name: 'Logic Gates', url: 'https://abhishekazadprince.github.io/logic/', icon: 'fa-microchip', desc: 'Digital logic and boolean algebra sim.' },
-                        { name: 'Calculus Concepts', url: 'https://abhishekazadprince.github.io/Calculus/', icon: 'fa-chart-area', desc: 'Visualizing limits, derivatives, and integrals.' },
-                        { name: 'Quantum Basics', url: 'https://abhishekazadprince.github.io/quantum/', icon: 'fa-bolt', desc: 'Introductory quantum mechanics visualizer.' },
-                        { name: 'Circle Geometries', url: 'https://abhishekazadprince.github.io/Circle/', icon: 'fa-circle-notch', desc: 'Coordinate geometry and loci visualization.' },
-                        { name: 'Polynomials', url: 'https://abhishekazadprince.github.io/Order/', icon: 'fa-subscript', desc: 'Interactive mathematics and polynomial functions.' },
-                        { name: 'Vector Algebra', url: 'https://abhishekazadprince.github.io/Vector/', icon: 'fa-arrows-alt', desc: '3D vector operations and transformations.' },
-                    ];
-
-                    const container = document.currentScript.parentNode;
-                    repos.forEach(repo => {
-                        const card = `
-                        <a href="${repo.url}" target="_blank" class="glass-card p-6 rounded-xl hover-lift group block h-full flex flex-col justify-between">
-                            <div>
-                                <div class="w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center mb-4 text-brand-400 group-hover:text-brand-300 transition-colors border border-slate-700">
-                                    <i class="fas ${repo.icon} text-xl"></i>
-                                </div>
-                                <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-brand-400 transition-colors">${repo.name}</h3>
-                                <p class="text-slate-400 text-sm mb-4">${repo.desc}</p>
-                            </div>
-                            <div class="text-brand-500 text-sm font-medium flex items-center mt-auto">
-                                View Module <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                            </div>
-                        </a>
-                        `;
-                        document.write(card);
-                    });
-                </script>
-            </div>
+      </div>
+      <div>
+        <div style="font-size:12px; text-transform:uppercase; letter-spacing:.1em; color:#9B97A8; margin-bottom:12px;">Connect</div>
+        <div class="foot-links">
+          <a href="https://in.linkedin.com/in/abhishek-azad-prince-6a520a60" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://youtube.com/@sciencenphilosophy" target="_blank"><i class="fab fa-youtube"></i></a>
+          <a href="https://github.com/abhishekazadprince" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="mailto:abhishekazadprince@gmail.com"><i class="fas fa-envelope"></i></a>
         </div>
-    </section>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; <span id="yr"></span> Abhishek Kumar. All rights reserved.</span>
+      <span>Patna, Bihar, India</span>
+    </div>
+  </div>
+</footer>
 
-    <section id="publications" class="py-20 bg-slate-800 border-t border-slate-700">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-12 text-center">
-                <h2 class="text-3xl font-bold text-white mb-4">Published Books & Publications</h2>
-                <p class="text-slate-400 max-w-2xl mx-auto">Authored materials covering advanced theoretical physics, calculus, and foundational mechanics. Available globally across major digital platforms.</p>
-                <div class="w-20 h-1 bg-brand-500 mx-auto rounded-full mt-6"></div>
-            </div>
-
-            <!-- Featured Books Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-                
-                <!-- Book 1 -->
-                <div class="glass-card rounded-xl overflow-hidden flex flex-col">
-                    <div class="h-48 bg-gradient-to-br from-indigo-900 to-slate-900 flex items-center justify-center p-6 text-center border-b border-slate-700 relative">
-                        <i class="fas fa-book-journal-whills text-6xl text-indigo-400/50 mb-2"></i>
-                        <h3 class="text-xl font-bold text-white absolute">Gravity - Planetary Motion</h3>
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col">
-                        <p class="text-slate-400 text-sm mb-6 flex-1">A comprehensive guide detailing celestial mechanics, Newtonian gravity, and the fundamental laws governing planetary orbits.</p>
-                        <div class="flex flex-col gap-2 mt-auto">
-                            <a href="https://www.amazon.in/Gravity-Planetary-Motion-Abhishek-Kumar/dp/B09PH6292K" target="_blank" class="w-full text-center bg-slate-700 hover:bg-[#E68A00] text-white text-sm py-2 px-3 rounded transition-colors"><i class="fab fa-amazon mr-1"></i> Amazon India</a>
-                            <a href="https://dl.flipkart.com/dl/gravity-planetary-motion/p/itm84b6b08e673e0?_refId=&_appId=CL" target="_blank" class="w-full text-center bg-slate-700 hover:bg-[#2874F0] text-white text-sm py-2 px-3 rounded transition-colors"><i class="fas fa-shopping-cart mr-1"></i> Flipkart</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Book 2 -->
-                <div class="glass-card rounded-xl overflow-hidden flex flex-col">
-                    <div class="h-48 bg-gradient-to-br from-blue-900 to-slate-900 flex items-center justify-center p-6 text-center border-b border-slate-700 relative">
-                        <i class="fas fa-space-shuttle text-6xl text-blue-400/50 mb-2"></i>
-                        <h3 class="text-xl font-bold text-white absolute">Relativity - Speed of light</h3>
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col">
-                        <p class="text-slate-400 text-sm mb-6 flex-1">Delving into Einstein's postulates, time dilation, length contraction, and the mind-bending realities of near-light-speed travel.</p>
-                        <div class="flex flex-col gap-2 mt-auto">
-                            <a href="https://www.amazon.in/Relativity-Speed-light-Abhishek-Kumar/dp/B09W36BNKK" target="_blank" class="w-full text-center bg-slate-700 hover:bg-[#E68A00] text-white text-sm py-2 px-3 rounded transition-colors"><i class="fab fa-amazon mr-1"></i> Amazon India</a>
-                            <a href="https://dl.flipkart.com/dl/relativity/p/itm08f1945c422cf?_refId=&_appId=CL" target="_blank" class="w-full text-center bg-slate-700 hover:bg-[#2874F0] text-white text-sm py-2 px-3 rounded transition-colors"><i class="fas fa-shopping-cart mr-1"></i> Flipkart</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Book 3 -->
-                <div class="glass-card rounded-xl overflow-hidden flex flex-col">
-                    <div class="h-48 bg-gradient-to-br from-purple-900 to-slate-900 flex items-center justify-center p-6 text-center border-b border-slate-700 relative">
-                        <i class="fas fa-network-wired text-6xl text-purple-400/50 mb-2"></i>
-                        <h3 class="text-xl font-bold text-white absolute">Quantum Field Theory (Vol 3)</h3>
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col">
-                        <p class="text-slate-400 text-sm mb-6 flex-1">Advanced mathematical formulation of QFT, addressing quantum electrodynamics and particle interactions.</p>
-                        <div class="flex flex-col gap-2 mt-auto">
-                            <a href="https://www.amazon.in/Quantum-Field-Theory-Abhishek-Kumar/dp/B0F5NVR1VY" target="_blank" class="w-full text-center bg-slate-700 hover:bg-[#E68A00] text-white text-sm py-2 px-3 rounded transition-colors"><i class="fab fa-amazon mr-1"></i> Amazon India</a>
-                            <a href="https://store.pothi.com/book/abhishek-kumar-quantum-field-theory-3/" target="_blank" class="w-full text-center bg-slate-700 hover:bg-brand-600 text-white text-sm py-2 px-3 rounded transition-colors"><i class="fas fa-book-open mr-1"></i> Pothi Store</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Digital Library of additional links -->
-            <div class="bg-slate-900 rounded-xl p-8 border border-slate-700">
-                <div class="text-center mb-8">
-                    <h3 class="text-2xl font-semibold text-white mb-2"><i class="fas fa-tablet-screen-button text-brand-500 mr-2"></i>Digital Library</h3>
-                    <p class="text-slate-400 text-sm">Explore my extensive collection of E-Books and Audiobooks across Google Play and Amazon.</p>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <!-- Google Play Books (E-Books) -->
-                    <a href="https://play.google.com/store/books/details?id=IwHXEQAAQBAJ" target="_blank" class="flex items-center p-3 bg-slate-800 hover:bg-[#4285F4] text-slate-300 hover:text-white rounded-lg transition-colors border border-slate-700 text-sm">
-                        <i class="fab fa-google-play mr-3 text-lg"></i> Google Play E-Book 1
-                    </a>
-                    <a href="https://play.google.com/store/books/details?id=fKdbEQAAQBAJ" target="_blank" class="flex items-center p-3 bg-slate-800 hover:bg-[#4285F4] text-slate-300 hover:text-white rounded-lg transition-colors border border-slate-700 text-sm">
-                        <i class="fab fa-google-play mr-3 text-lg"></i> Google Play E-Book 2
-                    </a>
-                    <a href="https://play.google.com/store/books/details?id=retaEQAAQBAJ" target="_blank" class="flex items-center p-3 bg-slate-800 hover:bg-[#4285F4] text-slate-300 hover:text-white rounded-lg transition-colors border border-slate-700 text-sm">
-                        <i class="fab fa-google-play mr-3 text-lg"></i> Google Play E-Book 3
-                    </a>
-                    <a href="https://play.google.com/store/books/details?id=dINYEQAAQBAJ" target="_blank" class="flex items-center p-3 bg-slate-800 hover:bg-[#4285F4] text-slate-300 hover:text-white rounded-lg transition-colors border border-slate-700 text-sm">
-                        <i class="fab fa-google-play mr-3 text-lg"></i> Google Play E-Book 4
-                    </a>
-                    <a href="https://play.google.com/store/books/details?id=n5teEAAAQBAJ" target="_blank" class="flex items-center p-3 bg-slate-800 hover:bg-[#4285F4] text-slate-300 hover:text-white rounded-lg transition-colors border border-slate-700 text-sm">
-                        <i class="fab fa-google-play mr-3 text-lg"></i> Google Play E-Book 5
-                    </a>
-
-                    <!-- Google Play Audiobooks -->
-                    <a href="https://play.google.com/store/audiobooks/details?id=AQAAAEBKtTT1bM" target="_blank" class="flex items-center p-3 bg-slate-800 hover:bg-[#EA4335] text-slate-300 hover:text-white rounded-lg transition-colors border border-slate-700 text-sm">
-                        <i class="fas fa-headphones mr-3 text-lg"></i> Play Audiobook 1
-                    </a>
-                    <a href="https://play.google.com/store/audiobooks/details?id=AQAAAEBKaVwpBM" target="_blank" class="flex items-center p-3 bg-slate-800 hover:bg-[#EA4335] text-slate-300 hover:text-white rounded-lg transition-colors border border-slate-700 text-sm">
-                        <i class="fas fa-headphones mr-3 text-lg"></i> Play Audiobook 2
-                    </a>
-
-                    <!-- Amazon Short Links -->
-                    <a href="https://amzn.in/d/08lCILb9" target="_blank" class="flex items-center p-3 bg-slate-800 hover:bg-[#FF9900] hover:text-black text-slate-300 rounded-lg transition-colors border border-slate-700 text-sm">
-                        <i class="fab fa-amazon mr-3 text-lg"></i> Amazon E-Book 1
-                    </a>
-                    <a href="https://amzn.in/d/02oKkLKH" target="_blank" class="flex items-center p-3 bg-slate-800 hover:bg-[#FF9900] hover:text-black text-slate-300 rounded-lg transition-colors border border-slate-700 text-sm">
-                        <i class="fab fa-amazon mr-3 text-lg"></i> Amazon E-Book 2
-                    </a>
-                    <a href="https://amzn.in/d/02Iq27TB" target="_blank" class="flex items-center p-3 bg-slate-800 hover:bg-[#FF9900] hover:text-black text-slate-300 rounded-lg transition-colors border border-slate-700 text-sm">
-                        <i class="fab fa-amazon mr-3 text-lg"></i> Amazon E-Book 3
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="videos" class="py-20 bg-slate-900 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center mb-12">
-                <div class="text-center md:text-left mb-6 md:mb-0">
-                    <h2 class="text-3xl font-bold text-white mb-2">Video Lectures</h2>
-                    <p class="text-slate-400">Curated ad-free embedded lectures directly from my channel</p>
-                    <div class="w-20 h-1 bg-brand-500 rounded-full mt-4 mx-auto md:mx-0"></div>
-                </div>
-                <a href="https://youtube.com/@sciencenphilosophy?si=0YMVENjplc_oDzoD" target="_blank" class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-medium transition-colors shadow-lg flex items-center">
-                    <i class="fab fa-youtube text-xl mr-2"></i> Subscribe to Channel
-                </a>
-            </div>
-
-            <!-- Hindi Videos -->
-            <div class="mb-16">
-                <h3 class="text-2xl font-semibold text-white mb-6 border-b border-slate-700 pb-2"><i class="fas fa-language text-brand-500 mr-2"></i>Lectures in Hindi</h3>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <!-- Video items -->
-                    <div class="glass-card rounded-xl overflow-hidden aspect-video relative group shadow-lg">
-                        <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/OSpU_nuSSQQ?rel=0&modestbranding=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                    <div class="glass-card rounded-xl overflow-hidden aspect-video relative group shadow-lg">
-                        <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/FzBTUK1d3qk?rel=0&modestbranding=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                    <div class="glass-card rounded-xl overflow-hidden aspect-video relative group shadow-lg">
-                        <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/sHHAlCcdRK4?rel=0&modestbranding=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                    <div class="glass-card rounded-xl overflow-hidden aspect-video relative group shadow-lg">
-                        <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/46mVGATbQlg?rel=0&modestbranding=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                    <div class="glass-card rounded-xl overflow-hidden aspect-video relative group shadow-lg">
-                        <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/pxKiSuYaIZw?rel=0&modestbranding=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                    <div class="glass-card rounded-xl overflow-hidden aspect-video relative group shadow-lg">
-                        <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/Z-j3804kgcA?rel=0&modestbranding=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-
-            <!-- English Videos -->
-            <div>
-                <h3 class="text-2xl font-semibold text-white mb-6 border-b border-slate-700 pb-2"><i class="fas fa-language text-blue-500 mr-2"></i>Lectures in English</h3>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <div class="glass-card rounded-xl overflow-hidden aspect-video relative group shadow-lg">
-                        <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/r2mqIsHD89s?rel=0&modestbranding=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                    <div class="glass-card rounded-xl overflow-hidden aspect-video relative group shadow-lg">
-                        <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/Ky3MqGzGj1k?rel=0&modestbranding=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                    <div class="glass-card rounded-xl overflow-hidden aspect-video relative group shadow-lg">
-                        <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/ryjXjC6AdR4?rel=0&modestbranding=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                    <div class="glass-card rounded-xl overflow-hidden aspect-video relative group shadow-lg">
-                        <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/nljSitWeLzI?rel=0&modestbranding=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-slate-950 py-12 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="text-center md:text-left">
-                <div class="font-bold text-xl tracking-tight text-white mb-2">Abhishek Kumar</div>
-                <p class="text-slate-500 text-sm">Physics Faculty & Academic Author</p>
-            </div>
-            
-            <div class="flex gap-4">
-                <a href="https://in.linkedin.com/in/abhishek-azad-prince-6a520a60" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-brand-500 hover:text-white transition-colors">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a href="https://youtube.com/@sciencenphilosophy?si=0YMVENjplc_oDzoD" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-red-600 hover:text-white transition-colors">
-                    <i class="fab fa-youtube"></i>
-                </a>
-                <a href="https://github.com/abhishekazadprince" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-slate-600 hover:text-white transition-colors">
-                    <i class="fab fa-github"></i>
-                </a>
-            </div>
-            
-            <div class="text-slate-600 text-sm text-center md:text-right">
-                &copy; <script>document.write(new Date().getFullYear())</script> Abhishek Kumar. <br class="md:hidden">All rights reserved.
-            </div>
-        </div>
-    </footer>
-
-    <!-- Interactive Scripts -->
-    <script>
-        // Mobile Menu Toggle
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
-
-        // Close mobile menu on link click
-        menu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.add('hidden');
-            });
-        });
-    </script>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
 </body>
 </html>
