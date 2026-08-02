@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Abhishek Kumar | Physics Faculty — JEE & NEET</title>
+<meta name="description" content="Abhishek Kumar — Physics faculty with 10 years of teaching experience across JEE Main, JEE Advanced, NEET, Foundation and CBSE. Author of three physics books and creator of 25+ interactive physics simulations and AI-based educational tools.">
+<meta name="author" content="Abhishek Kumar">
+<meta property="og:title" content="Abhishek Kumar | Physics Faculty — JEE & NEET">
+<meta property="og:description" content="10 years of Physics teaching across JEE, NEET, Foundation & CBSE — plus AI-based educational tools and physics simulations built in Python.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='16' fill='%23151A2D'/%3E%3Ccircle cx='50' cy='50' r='28' fill='none' stroke='%23C9AD73' stroke-width='4'/%3E%3Ccircle cx='50' cy='50' r='6' fill='%238E2F2F'/%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -62,11 +69,32 @@
   nav.links{ display:flex; gap:28px; font-size:14px; font-weight:500; }
   nav.links a{ color:var(--ink-soft); transition:color .2s; padding:4px 0; border-bottom:2px solid transparent;}
   nav.links a:hover{ color:var(--ink); border-color:var(--brass); }
-  .mobile-btn{ display:none; }
+  .mobile-btn{ display:none; background:none; border:none; cursor:pointer; color:var(--ink); padding:6px; }
+  .mobile-menu{ display:none; }
   @media (max-width:860px){
     nav.links{ display:none; }
     .mobile-btn{ display:block; font-size:20px; }
+    .mobile-menu.open{
+      display:flex; flex-direction:column; position:absolute; top:68px; left:0; right:0;
+      background:var(--paper); border-bottom:1px solid var(--paper-line); padding:8px 24px 16px;
+    }
+    .mobile-menu a{ padding:12px 0; font-size:15px; font-weight:500; color:var(--ink-soft); border-bottom:1px solid var(--paper-line); }
+    .mobile-menu a:last-child{ border-bottom:none; }
   }
+  nav.links a.active{ color:var(--ink); border-color:var(--brass); }
+
+  /* Back to top */
+  .back-top{
+    position:fixed; bottom:26px; right:26px; width:44px; height:44px; border-radius:50%;
+    background:var(--ink); color:#fff; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 14px rgba(21,26,45,0.25); opacity:0; pointer-events:none; transition:.25s ease; z-index:60;
+  }
+  .back-top.show{ opacity:1; pointer-events:auto; }
+  .back-top:hover{ background:var(--brass); }
+
+  /* Scroll reveal */
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in-view{ opacity:1; transform:translateY(0); }
 
   /* Hero */
   .hero{ padding:76px 0 60px; }
@@ -99,13 +127,14 @@
   .section-head p{ color:var(--ink-soft); max-width:64ch; margin-top:10px; font-size:15px; line-height:1.6; }
 
   /* Approach / highlight cards */
-  .approach-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
-  @media (max-width:860px){ .approach-grid{ grid-template-columns:1fr; } }
-  .approach-card{ background:var(--card); border:1px solid var(--paper-line); padding:26px 22px; position:relative; }
-  .approach-card .num{ font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--brass); font-weight:600; }
-  .approach-card h3{ font-size:18px; margin:10px 0 8px; }
+  .approach-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
+  @media (max-width:1000px){ .approach-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:560px){ .approach-grid{ grid-template-columns:1fr; } }
+  .approach-card{ background:var(--card); border:1px solid var(--paper-line); padding:28px 24px 24px; position:relative; transition:.18s ease; }
+  .approach-card:hover{ transform:translate(-3px,-3px); box-shadow:5px 5px 0 var(--paper-line); border-color:var(--ink); }
+  .approach-card .num{ font-family:'Source Serif 4',serif; font-size:30px; font-weight:600; color:var(--paper-line); line-height:1; }
+  .approach-card h3{ font-size:18px; margin:6px 0 8px; }
   .approach-card p{ font-size:13.5px; color:var(--ink-soft); line-height:1.6; margin:0; }
-  .check{ position:absolute; top:20px; right:18px; color:var(--red); font-size:18px; transform:rotate(-8deg); opacity:.85;}
 
   /* Timeline */
   .tl{ position:relative; padding-left:30px; border-left:2px solid var(--ink); }
@@ -122,8 +151,8 @@
   /* Subjects / skills */
   .subject-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
   @media (max-width:700px){ .subject-grid{ grid-template-columns:repeat(2,1fr);} }
-  .subject-pill{ background:var(--card); border:1px solid var(--paper-line); padding:14px 16px; font-size:13.5px; font-weight:600; display:flex; align-items:center; gap:10px; }
-  .subject-pill i{ color:var(--brass); font-size:14px; }
+  .subject-pill{ background:var(--card); border:1px solid var(--paper-line); border-left:3px solid var(--brass-soft); padding:13px 16px; font-size:13.5px; font-weight:600; transition:.18s ease; }
+  .subject-pill:hover{ border-left-color:var(--red); background:var(--paper); }
 
   .toolkit-box{ margin-top:30px; background:#14192B; color:#EDE9DD; padding:26px 28px; border:1px solid var(--paper-line); }
   .toolkit-box .eyebrow2{ font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--brass-soft); }
@@ -135,20 +164,22 @@
   /* Education */
   .edu-grid{ display:grid; grid-template-columns:1fr 1fr; gap:28px; }
   @media (max-width:860px){ .edu-grid{ grid-template-columns:1fr; } }
-  .edu-card{ background:var(--card); border:1px solid var(--paper-line); padding:24px; }
+  .edu-card{ background:var(--card); border:1px solid var(--paper-line); padding:24px; transition:.18s ease; }
+  .edu-card:hover{ transform:translate(-3px,-3px); box-shadow:5px 5px 0 var(--paper-line); border-color:var(--ink); }
   .edu-card h4{ font-size:16px; margin:0 0 4px; }
   .edu-card .meta{ font-size:13px; color:var(--ink-soft); line-height:1.6; }
   .mentor-note{ margin-top:18px; padding:16px 18px; border-left:3px solid var(--brass); background:rgba(156,122,60,0.06); font-size:13px; color:var(--ink-soft); line-height:1.65; }
   .mentor-note b{ color:var(--ink); }
 
   /* Small icon motif (restrained, professional) */
-  .icon-box{ width:52px; height:52px; border-radius:6px; background:#14192B; overflow:hidden; flex:0 0 auto; }
+  .icon-box{ width:52px; height:52px; border-radius:6px; background:var(--paper); border:1px solid var(--paper-line); overflow:hidden; flex:0 0 auto; }
   .icon-box svg{ width:100%; height:100%; display:block; }
 
   /* Books */
   .book-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
   @media (max-width:860px){ .book-grid{ grid-template-columns:1fr; } }
-  .book-card{ background:var(--card); border:1px solid var(--paper-line); padding:22px; }
+  .book-card{ background:var(--card); border:1px solid var(--paper-line); padding:22px; transition:.18s ease; }
+  .book-card:hover{ transform:translate(-3px,-3px); box-shadow:5px 5px 0 var(--paper-line); border-color:var(--ink); }
   .book-card .card-top{ display:flex; align-items:center; gap:14px; margin-bottom:14px; }
   .book-card h5{ font-size:15px; font-family:'Source Serif 4',serif; margin:0; }
   .book-card p{ font-size:12.5px; color:var(--ink-soft); line-height:1.6; margin:0 0 14px; }
@@ -172,9 +203,9 @@
 
   .flagship-card{
     display:flex; align-items:center; gap:26px; background:#14192B; color:#EDE9DD;
-    border:1px solid var(--paper-line); padding:26px 28px; margin-bottom:36px; transition:.2s;
+    border:1px solid var(--paper-line); padding:26px 28px; margin-bottom:36px; transition:.18s ease;
   }
-  .flagship-card:hover{ border-color:var(--brass); }
+  .flagship-card:hover{ border-color:var(--brass); transform:translate(-4px,-4px); box-shadow:7px 7px 0 var(--brass-soft); }
   @media (max-width:700px){ .flagship-card{ flex-direction:column; align-items:flex-start; } }
   .icon-box-lg{ width:96px; height:96px; border-radius:6px; }
   .flagship-card h4{ font-family:'Source Serif 4',serif; font-size:21px; margin:6px 0 8px; color:#fff; }
@@ -182,8 +213,8 @@
   .flagship-card .flagship-link{ font-family:'IBM Plex Mono',monospace; font-size:11.5px; font-weight:600; letter-spacing:.06em; color:var(--brass-soft); text-transform:uppercase; }
   .flagship-card:hover .flagship-link{ color:#fff; }
   @media (max-width:860px){ .sim-grid{ grid-template-columns:repeat(2,1fr);} }
-  .sim-card{ background:var(--card); border:1px solid var(--paper-line); transition:.2s; display:flex; align-items:flex-start; gap:12px; padding:16px; }
-  .sim-card:hover{ border-color:var(--brass); }
+  .sim-card{ background:var(--card); border:1px solid var(--paper-line); transition:.18s ease; display:flex; align-items:flex-start; gap:12px; padding:16px; }
+  .sim-card:hover{ transform:translate(-3px,-3px); box-shadow:4px 4px 0 var(--paper-line); border-color:var(--ink); }
   .sim-card h5{ font-size:13.5px; margin:0 0 4px; font-family:'Source Serif 4',serif; }
   .sim-card p{ font-size:11.5px; color:var(--ink-soft); line-height:1.5; margin:0; }
 
@@ -209,7 +240,16 @@
       <a href="#simulations">Simulations</a>
       <a href="#contact">Contact</a>
     </nav>
-    <div class="mobile-btn"><i class="fas fa-bars"></i></div>
+    <button class="mobile-btn" id="mobileBtn" aria-label="Toggle menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#subjects">Subjects</a>
+    <a href="#books">Publications</a>
+    <a href="#lectures">Lectures</a>
+    <a href="#simulations">Simulations</a>
+    <a href="#contact">Contact</a>
   </div>
 </header>
 
@@ -218,12 +258,12 @@
     <div>
       <span class="eyebrow">JEE / NEET Physics Faculty</span>
       <h1>Abhishek Kumar</h1>
-      <p class="lead">Subjects: Mechanics, Electrodynamics, Thermodynamics, Optics and Modern Physics — supported by a B.Tech (Computer Science &amp; Engineering) background that turns abstract theory into interactive, visual, problem-solving practice. Author of three physics books; creator of physics simulations.</p>
+      <p class="lead">Physics faculty with 10 years of teaching experience across JEE Main, JEE Advanced, NEET, Foundation and CBSE curricula, covering Mechanics, Electrodynamics, Thermodynamics, Waves, Optics and Modern Physics, with focus on conceptual understanding and problem-solving. Also develops AI-based educational tools and scientific-computing applications in Python, for physics instruction, question analysis and 3D visualization.</p>
       <div class="stat-row">
         <div class="stat"><b>10+</b><span>Years Teaching</span></div>
         <div class="stat"><b>9</b><span>Institutes, 6 States</span></div>
         <div class="stat"><b>3</b><span>Published Books</span></div>
-        <div class="stat"><b>25+</b><span>Physics Simulations Built</span></div>
+        <div class="stat"><b>25+</b><span>Simulations &amp; AI Tools</span></div>
       </div>
       <div class="cta-row">
         <a href="#experience" class="btn btn-primary"><i class="fas fa-briefcase"></i> View Experience</a>
@@ -242,26 +282,30 @@
 <section id="about">
   <div class="wrap">
     <div class="section-head">
+      <span class="eyebrow">Method</span>
+      <h2>Approach</h2>
       <p>From Kota-linked coaching chains to CBSE senior-secondary classrooms, the approach has stayed constant: build airtight conceptual foundations, then drill exam-specific problem solving until it's instinctive.</p>
     </div>
     <div class="approach-grid">
       <div class="approach-card">
-        <span class="check"><i class="fas fa-check"></i></span>
         <div class="num">01</div>
         <h3>Pan-India Exam Exposure</h3>
         <p>Taught JEE/NEET batches in Bihar, Maharashtra, Tamil Nadu, Arunachal Pradesh, Madhya Pradesh and Uttar Pradesh — adapting to every board pattern and student level along the way.</p>
       </div>
       <div class="approach-card">
-        <span class="check"><i class="fas fa-check"></i></span>
         <div class="num">02</div>
         <h3>Published Author</h3>
         <p>Authored three physics titles — on gravity &amp; planetary motion, relativity, and quantum field theory — available on Amazon, Flipkart and Google Play.</p>
       </div>
       <div class="approach-card">
-        <span class="check"><i class="fas fa-check"></i></span>
         <div class="num">03</div>
         <h3>Simulation-Backed Teaching</h3>
         <p>Built Python/HTML physics simulations — mechanics, waves, quantum basics — that turn textbook derivations into something students can see and manipulate.</p>
+      </div>
+      <div class="approach-card">
+        <div class="num">04</div>
+        <h3>AI-Based Educational Tools</h3>
+        <p>Develops AI-assisted tools and Python scientific-computing applications for question analysis and 3D visualization, extending classroom instruction into interactive, computed practice.</p>
       </div>
     </div>
   </div>
@@ -331,15 +375,15 @@
       <h2>Subjects &amp; Expertise</h2>
     </div>
     <div class="subject-grid">
-      <div class="subject-pill"><i class="fas fa-check-double"></i> JEE Advanced Physics</div>
-      <div class="subject-pill"><i class="fas fa-check-double"></i> NEET Physics</div>
-      <div class="subject-pill"><i class="fas fa-check-double"></i> Mechanics</div>
-      <div class="subject-pill"><i class="fas fa-check-double"></i> Electrodynamics</div>
-      <div class="subject-pill"><i class="fas fa-check-double"></i> Thermodynamics</div>
-      <div class="subject-pill"><i class="fas fa-check-double"></i> Optics</div>
-      <div class="subject-pill"><i class="fas fa-check-double"></i> Modern Physics</div>
-      <div class="subject-pill"><i class="fas fa-check-double"></i> Foundation (IX–X) Physics</div>
-      <div class="subject-pill"><i class="fas fa-check-double"></i> CBSE Senior Secondary Physics</div>
+      <div class="subject-pill">JEE Advanced Physics</div>
+      <div class="subject-pill">NEET Physics</div>
+      <div class="subject-pill">Mechanics</div>
+      <div class="subject-pill">Electrodynamics</div>
+      <div class="subject-pill">Thermodynamics</div>
+      <div class="subject-pill">Optics</div>
+      <div class="subject-pill">Modern Physics</div>
+      <div class="subject-pill">Foundation (IX–X) Physics</div>
+      <div class="subject-pill">CBSE Senior Secondary Physics</div>
     </div>
 
     <div class="toolkit-box">
@@ -390,9 +434,9 @@
         <div class="card-top">
           <div class="icon-box">
             <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
-              <rect width="100" height="100" fill="#14192B"/>
-              <ellipse cx="50" cy="52" rx="36" ry="15" fill="none" stroke="var(--brass-soft)" stroke-width="1.3"/>
-              <ellipse cx="50" cy="52" rx="24" ry="9" fill="none" stroke="var(--brass-soft)" stroke-width="1" opacity="0.6"/>
+              
+              <ellipse cx="50" cy="52" rx="36" ry="15" fill="none" stroke="var(--brass)" stroke-width="1.3"/>
+              <ellipse cx="50" cy="52" rx="24" ry="9" fill="none" stroke="var(--brass)" stroke-width="1" opacity="0.6"/>
               <circle cx="50" cy="52" r="6" fill="#C9AD73"/>
               <circle cx="83" cy="55" r="2.4" fill="var(--red)"/>
             </svg>
@@ -409,9 +453,9 @@
         <div class="card-top">
           <div class="icon-box">
             <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
-              <rect width="100" height="100" fill="#14192B"/>
-              <line x1="50" y1="12" x2="20" y2="88" stroke="var(--brass-soft)" stroke-width="1.3"/>
-              <line x1="50" y1="12" x2="80" y2="88" stroke="var(--brass-soft)" stroke-width="1.3"/>
+              
+              <line x1="50" y1="12" x2="20" y2="88" stroke="var(--brass)" stroke-width="1.3"/>
+              <line x1="50" y1="12" x2="80" y2="88" stroke="var(--brass)" stroke-width="1.3"/>
               <line x1="50" y1="12" x2="50" y2="88" stroke="#3A4058" stroke-width="1" stroke-dasharray="2 3"/>
               <circle cx="50" cy="62" r="3" fill="var(--red)"/>
             </svg>
@@ -428,12 +472,12 @@
         <div class="card-top">
           <div class="icon-box">
             <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
-              <rect width="100" height="100" fill="#14192B"/>
-              <line x1="18" y1="22" x2="40" y2="50" stroke="var(--brass-soft)" stroke-width="1.3"/>
-              <line x1="18" y1="78" x2="40" y2="50" stroke="var(--brass-soft)" stroke-width="1.3"/>
-              <line x1="82" y1="22" x2="60" y2="50" stroke="var(--brass-soft)" stroke-width="1.3"/>
-              <line x1="82" y1="78" x2="60" y2="50" stroke="var(--brass-soft)" stroke-width="1.3"/>
-              <path d="M40,50 C46,42 54,58 60,50" fill="none" stroke="#EDE9DD" stroke-width="1.3"/>
+              
+              <line x1="18" y1="22" x2="40" y2="50" stroke="var(--brass)" stroke-width="1.3"/>
+              <line x1="18" y1="78" x2="40" y2="50" stroke="var(--brass)" stroke-width="1.3"/>
+              <line x1="82" y1="22" x2="60" y2="50" stroke="var(--brass)" stroke-width="1.3"/>
+              <line x1="82" y1="78" x2="60" y2="50" stroke="var(--brass)" stroke-width="1.3"/>
+              <path d="M40,50 C46,42 54,58 60,50" fill="none" stroke="var(--ink)" stroke-width="1.3"/>
               <circle cx="40" cy="50" r="2.4" fill="var(--red)"/>
               <circle cx="60" cy="50" r="2.4" fill="var(--red)"/>
             </svg>
@@ -512,35 +556,35 @@
     <h4 class="sim-group-title"><i class="fas fa-gear" style="color:var(--brass); margin-right:6px;"></i>Mechanics &amp; Mass Distribution</h4>
     <div class="sim-grid" style="margin-bottom:32px;">
       <a class="sim-card" href="https://abhishekazadprince.github.io/Physics/" target="_blank">
-        <div class="icon-box"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#14192B"/><ellipse cx="50" cy="50" rx="36" ry="14" fill="none" stroke="var(--brass-soft)" stroke-width="1.3"/><circle r="3" fill="var(--red)"><animateMotion dur="4s" repeatCount="indefinite" path="M14,50 A36,14 0 1,1 86,50 A36,14 0 1,1 14,50"/></circle></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="50" rx="36" ry="14" fill="none" stroke="var(--brass)" stroke-width="1.3"/><circle r="3" fill="var(--red)"><animateMotion dur="4s" repeatCount="indefinite" path="M14,50 A36,14 0 1,1 86,50 A36,14 0 1,1 14,50"/></circle></svg></div>
         <div><h5>Physics Lab</h5><p>Core mechanics &amp; orbital-motion sandbox.</p></div>
       </a>
       <a class="sim-card" href="https://abhishekazadprince.github.io/Momentum/" target="_blank">
-        <div class="icon-box"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#14192B"/><circle cy="50" r="9" fill="none" stroke="var(--brass-soft)" stroke-width="1.4"><animate attributeName="cx" values="26;46;26" dur="2s" repeatCount="indefinite"/></circle><circle cy="50" r="6" fill="none" stroke="#EDE9DD" stroke-width="1.2"><animate attributeName="cx" values="72;80;72" dur="2s" repeatCount="indefinite" begin="0.3s"/></circle></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 100 100"><circle cy="50" r="9" fill="none" stroke="var(--brass)" stroke-width="1.4"><animate attributeName="cx" values="26;46;26" dur="2s" repeatCount="indefinite"/></circle><circle cy="50" r="6" fill="none" stroke="var(--ink)" stroke-width="1.2"><animate attributeName="cx" values="72;80;72" dur="2s" repeatCount="indefinite" begin="0.3s"/></circle></svg></div>
         <div><h5>Momentum</h5><p>Collisions, conservation of momentum &amp; impulse.</p></div>
       </a>
       <a class="sim-card" href="https://abhishekazadprince.github.io/Torque/" target="_blank">
-        <div class="icon-box"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#14192B"/><circle cx="50" cy="50" r="4" fill="#EDE9DD"/><g><path d="M50,50 L86,50" stroke="var(--brass-soft)" stroke-width="1.3"/><path d="M50,50 Q70,26 86,32" fill="none" stroke="var(--red)" stroke-width="1.2"/><path d="M82,29 L86,32 L83,36" fill="none" stroke="var(--red)" stroke-width="1.2"/><animateTransform attributeName="transform" type="rotate" values="0 50 50;28 50 50;0 50 50" dur="3s" repeatCount="indefinite"/></g></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="4" fill="var(--ink)"/><g><path d="M50,50 L86,50" stroke="var(--brass)" stroke-width="1.3"/><path d="M50,50 Q70,26 86,32" fill="none" stroke="var(--red)" stroke-width="1.2"/><path d="M82,29 L86,32 L83,36" fill="none" stroke="var(--red)" stroke-width="1.2"/><animateTransform attributeName="transform" type="rotate" values="0 50 50;28 50 50;0 50 50" dur="3s" repeatCount="indefinite"/></g></svg></div>
         <div><h5>Torque</h5><p>Rotational force, lever arms &amp; rigid-body rotation.</p></div>
       </a>
       <a class="sim-card" href="https://abhishekazadprince.github.io/Circle/" target="_blank">
-        <div class="icon-box"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#14192B"/><circle cx="50" cy="50" r="30" fill="none" stroke="var(--brass-soft)" stroke-width="1.3"/><g><line x1="50" y1="50" x2="80" y2="50" stroke="#EDE9DD" stroke-width="1.2"/><circle cx="80" cy="50" r="2.4" fill="var(--red)"/><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="4s" repeatCount="indefinite"/></g></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" fill="none" stroke="var(--brass)" stroke-width="1.3"/><g><line x1="50" y1="50" x2="80" y2="50" stroke="var(--ink)" stroke-width="1.2"/><circle cx="80" cy="50" r="2.4" fill="var(--red)"/><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="4s" repeatCount="indefinite"/></g></svg></div>
         <div><h5>Circular Motion</h5><p>Circular motion, coordinate geometry &amp; loci.</p></div>
       </a>
       <a class="sim-card" href="https://abhishekazadprince.github.io/Com/" target="_blank">
-        <div class="icon-box"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#14192B"/><g><line x1="15" y1="50" x2="85" y2="50" stroke="var(--brass-soft)" stroke-width="1.3"/><circle cx="24" cy="50" r="6" fill="#EDE9DD"/><circle cx="78" cy="50" r="9" fill="#3A4058"/><circle cx="50" cy="50" r="2.6" fill="var(--red)"/><animateTransform attributeName="transform" type="rotate" values="-7 50 50;7 50 50;-7 50 50" dur="3.2s" repeatCount="indefinite"/></g></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 100 100"><g><line x1="15" y1="50" x2="85" y2="50" stroke="var(--brass)" stroke-width="1.3"/><circle cx="24" cy="50" r="6" fill="var(--ink)"/><circle cx="78" cy="50" r="9" fill="#3A4058"/><circle cx="50" cy="50" r="2.6" fill="var(--red)"/><animateTransform attributeName="transform" type="rotate" values="-7 50 50;7 50 50;-7 50 50" dur="3.2s" repeatCount="indefinite"/></g></svg></div>
         <div><h5>Centre of Mass</h5><p>First-order moment of a mass distribution — balance &amp; C.O.M.</p></div>
       </a>
       <a class="sim-card" href="https://abhishekazadprince.github.io/Compression/" target="_blank">
-        <div class="icon-box"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#14192B"/><g><path d="M10,50 L20,40 L28,60 L36,40 L44,60 L52,40 L60,60 L68,40 L76,60 L84,50 L90,50" fill="none" stroke="var(--brass-soft)" stroke-width="1.3"/><animateTransform attributeName="transform" type="scale" values="1 1;0.65 1;1 1" dur="2.4s" repeatCount="indefinite"/></g></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 100 100"><g><path d="M10,50 L20,40 L28,60 L36,40 L44,60 L52,40 L60,60 L68,40 L76,60 L84,50 L90,50" fill="none" stroke="var(--brass)" stroke-width="1.3"/><animateTransform attributeName="transform" type="scale" values="1 1;0.65 1;1 1" dur="2.4s" repeatCount="indefinite"/></g></svg></div>
         <div><h5>Compression</h5><p>C.O.M. (1st order) &amp; M.O.I. (2nd order) reframed as moments of different order.</p></div>
       </a>
       <a class="sim-card" href="https://abhishekazadprince.github.io/Rotation/" target="_blank">
-        <div class="icon-box"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#14192B"/><rect x="40" y="14" width="20" height="72" fill="none" stroke="var(--brass-soft)" stroke-width="1.2"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="3.4s" repeatCount="indefinite"/></rect><circle cx="50" cy="50" r="2.4" fill="var(--red)"/></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 100 100"><rect x="40" y="14" width="20" height="72" fill="none" stroke="var(--brass)" stroke-width="1.2"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="3.4s" repeatCount="indefinite"/></rect><circle cx="50" cy="50" r="2.4" fill="var(--red)"/></svg></div>
         <div><h5>Rotation</h5><p>Rigid-body rotational motion &amp; angular kinematics.</p></div>
       </a>
       <a class="sim-card" href="https://abhishekazadprince.github.io/Precession/" target="_blank">
-        <div class="icon-box"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#14192B"/><ellipse cx="50" cy="50" rx="30" ry="10" fill="none" stroke="#3A4058" stroke-width="0.8" stroke-dasharray="1.5 3"/><g><line x1="50" y1="50" x2="50" y2="16" stroke="var(--brass-soft)" stroke-width="1.3"/><circle cx="50" cy="16" r="3" fill="var(--red)"/><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="3s" repeatCount="indefinite"/></g></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="50" rx="30" ry="10" fill="none" stroke="#3A4058" stroke-width="0.8" stroke-dasharray="1.5 3"/><g><line x1="50" y1="50" x2="50" y2="16" stroke="var(--brass)" stroke-width="1.3"/><circle cx="50" cy="16" r="3" fill="var(--red)"/><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="3s" repeatCount="indefinite"/></g></svg></div>
         <div><h5>Precession</h5><p>Gyroscopic precession &amp; torque-induced axis drift.</p></div>
       </a>
     </div>
@@ -548,23 +592,23 @@
     <h4 class="sim-group-title"><i class="fas fa-water" style="color:var(--brass); margin-right:6px;"></i>Waves, Optics &amp; Signals</h4>
     <div class="sim-grid" style="margin-bottom:32px;">
       <a class="sim-card" href="https://abhishekazadprince.github.io/wave/" target="_blank">
-        <div class="icon-box"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#14192B"/><path d="M8,50 Q20,32 32,50 T56,50 T80,50 T96,50" fill="none" stroke="var(--brass-soft)" stroke-width="1.4" stroke-dasharray="6 6"><animate attributeName="stroke-dashoffset" from="0" to="-24" dur="1.4s" repeatCount="indefinite"/></path></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 100 100"><path d="M8,50 Q20,32 32,50 T56,50 T80,50 T96,50" fill="none" stroke="var(--brass)" stroke-width="1.4" stroke-dasharray="6 6"><animate attributeName="stroke-dashoffset" from="0" to="-24" dur="1.4s" repeatCount="indefinite"/></path></svg></div>
         <div><h5>Wave Mechanics</h5><p>Interactive wave propagation &amp; interference.</p></div>
       </a>
       <a class="sim-card" href="https://abhishekazadprince.github.io/optics/" target="_blank">
-        <div class="icon-box"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#14192B"/><path d="M50,14 C64,14 64,86 50,86 C36,86 36,14 50,14 Z" fill="none" stroke="var(--brass-soft)" stroke-width="1.2"/><line x1="6" y1="50" x2="94" y2="50" stroke="#3A4058" stroke-width="0.8" stroke-dasharray="1.5 3"/><line x1="10" y1="30" x2="50" y2="50" stroke="#EDE9DD" stroke-width="1"><animate attributeName="opacity" values="0.3;1;0.3" dur="1.8s" repeatCount="indefinite"/></line><line x1="50" y1="50" x2="90" y2="66" stroke="var(--red)" stroke-width="1"><animate attributeName="opacity" values="0.3;1;0.3" dur="1.8s" repeatCount="indefinite" begin="0.4s"/></line></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 100 100"><path d="M50,14 C64,14 64,86 50,86 C36,86 36,14 50,14 Z" fill="none" stroke="var(--brass)" stroke-width="1.2"/><line x1="6" y1="50" x2="94" y2="50" stroke="#3A4058" stroke-width="0.8" stroke-dasharray="1.5 3"/><line x1="10" y1="30" x2="50" y2="50" stroke="var(--ink)" stroke-width="1"><animate attributeName="opacity" values="0.3;1;0.3" dur="1.8s" repeatCount="indefinite"/></line><line x1="50" y1="50" x2="90" y2="66" stroke="var(--red)" stroke-width="1"><animate attributeName="opacity" values="0.3;1;0.3" dur="1.8s" repeatCount="indefinite" begin="0.4s"/></line></svg></div>
         <div><h5>Optics</h5><p>Ray diagrams — reflection, refraction &amp; lenses.</p></div>
       </a>
       <a class="sim-card" href="https://abhishekazadprince.github.io/Polarisation/" target="_blank">
-        <div class="icon-box"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#14192B"/><line x1="10" y1="50" x2="42" y2="50" stroke="#EDE9DD" stroke-width="1.2"/><line x1="50" y1="20" x2="50" y2="80" stroke="#3A4058" stroke-width="0.8" stroke-dasharray="1.5 3"/><g><line x1="58" y1="50" x2="90" y2="50" stroke="var(--brass-soft)" stroke-width="1.4"/><animateTransform attributeName="transform" type="rotate" values="0 74 50;90 74 50;180 74 50;270 74 50;360 74 50" dur="3.2s" repeatCount="indefinite"/></g></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 100 100"><line x1="10" y1="50" x2="42" y2="50" stroke="var(--ink)" stroke-width="1.2"/><line x1="50" y1="20" x2="50" y2="80" stroke="#3A4058" stroke-width="0.8" stroke-dasharray="1.5 3"/><g><line x1="58" y1="50" x2="90" y2="50" stroke="var(--brass)" stroke-width="1.4"/><animateTransform attributeName="transform" type="rotate" values="0 74 50;90 74 50;180 74 50;270 74 50;360 74 50" dur="3.2s" repeatCount="indefinite"/></g></svg></div>
         <div><h5>Polarisation</h5><p>Plane-polarised light &amp; polariser/analyser orientation.</p></div>
       </a>
       <a class="sim-card" href="https://abhishekazadprince.github.io/Rf/" target="_blank">
-        <div class="icon-box"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#14192B"/><line x1="50" y1="14" x2="50" y2="40" stroke="#EDE9DD" stroke-width="1.3"/><circle cx="50" cy="12" r="3" fill="var(--red)"><animate attributeName="r" values="2;6;2" dur="1.6s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0.2;1" dur="1.6s" repeatCount="indefinite"/></circle><path d="M10,66 Q30,48 50,66 T90,66" fill="none" stroke="var(--brass-soft)" stroke-width="1.3" stroke-dasharray="6 6"><animate attributeName="stroke-dashoffset" from="0" to="-24" dur="1.4s" repeatCount="indefinite"/></path></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 100 100"><line x1="50" y1="14" x2="50" y2="40" stroke="var(--ink)" stroke-width="1.3"/><circle cx="50" cy="12" r="3" fill="var(--red)"><animate attributeName="r" values="2;6;2" dur="1.6s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0.2;1" dur="1.6s" repeatCount="indefinite"/></circle><path d="M10,66 Q30,48 50,66 T90,66" fill="none" stroke="var(--brass)" stroke-width="1.3" stroke-dasharray="6 6"><animate attributeName="stroke-dashoffset" from="0" to="-24" dur="1.4s" repeatCount="indefinite"/></path></svg></div>
         <div><h5>RF &amp; EM Waves</h5><p>Radio-frequency &amp; electromagnetic wave behaviour.</p></div>
       </a>
       <a class="sim-card" href="https://abhishekazadprince.github.io/delay/" target="_blank">
-        <div class="icon-box"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#14192B"/><path d="M8,66 L30,66 L30,34 L52,34" fill="none" stroke="#EDE9DD" stroke-width="1.3"/><path d="M40,70 L62,70 L62,38 L84,38" fill="none" stroke="var(--brass-soft)" stroke-width="1.3" stroke-dasharray="3 2"><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.25;0.45;0.85;1" dur="3s" repeatCount="indefinite"/></path></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 100 100"><path d="M8,66 L30,66 L30,34 L52,34" fill="none" stroke="var(--ink)" stroke-width="1.3"/><path d="M40,70 L62,70 L62,38 L84,38" fill="none" stroke="var(--brass)" stroke-width="1.3" stroke-dasharray="3 2"><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.25;0.45;0.85;1" dur="3s" repeatCount="indefinite"/></path></svg></div>
         <div><h5>Delay Systems</h5><p>Time-delay systems &amp; phase-shift behaviour.</p></div>
       </a>
     </div>
@@ -572,11 +616,11 @@
     <h4 class="sim-group-title"><i class="fas fa-atom" style="color:var(--brass); margin-right:6px;"></i>Quantum &amp; Modern Physics</h4>
     <div class="sim-grid" style="margin-bottom:32px;">
       <a class="sim-card" href="https://abhishekazadprince.github.io/quantum/" target="_blank">
-        <div class="icon-box"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#14192B"/><path d="M8,66 C24,66 24,32 40,32 C50,32 50,66 60,66 C70,66 70,32 88,32" fill="none" stroke="var(--brass-soft)" stroke-width="1.3" stroke-dasharray="6 5"><animate attributeName="stroke-dashoffset" from="0" to="-22" dur="1.8s" repeatCount="indefinite"/></path><line x1="6" y1="66" x2="94" y2="66" stroke="#3A4058" stroke-width="0.8" stroke-dasharray="1.5 3"/></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 100 100"><path d="M8,66 C24,66 24,32 40,32 C50,32 50,66 60,66 C70,66 70,32 88,32" fill="none" stroke="var(--brass)" stroke-width="1.3" stroke-dasharray="6 5"><animate attributeName="stroke-dashoffset" from="0" to="-22" dur="1.8s" repeatCount="indefinite"/></path><line x1="6" y1="66" x2="94" y2="66" stroke="#3A4058" stroke-width="0.8" stroke-dasharray="1.5 3"/></svg></div>
         <div><h5>Quantum Basics</h5><p>Introductory quantum mechanics visualizer.</p></div>
       </a>
       <a class="sim-card" href="https://abhishekazadprince.github.io/logic/" target="_blank">
-        <div class="icon-box"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#14192B"/><ellipse cx="50" cy="50" rx="32" ry="12" fill="none" stroke="var(--brass-soft)" stroke-width="1.2"/><line x1="50" y1="14" x2="50" y2="86" stroke="#3A4058" stroke-width="0.8" stroke-dasharray="1.5 3"/><g><line x1="50" y1="50" x2="50" y2="20" stroke="var(--red)" stroke-width="1.3"/><circle cx="50" cy="20" r="3" fill="var(--red)"/><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="4.5s" repeatCount="indefinite"/></g></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="50" rx="32" ry="12" fill="none" stroke="var(--brass)" stroke-width="1.2"/><line x1="50" y1="14" x2="50" y2="86" stroke="#3A4058" stroke-width="0.8" stroke-dasharray="1.5 3"/><g><line x1="50" y1="50" x2="50" y2="20" stroke="var(--red)" stroke-width="1.3"/><circle cx="50" cy="20" r="3" fill="var(--red)"/><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="4.5s" repeatCount="indefinite"/></g></svg></div>
         <div><h5>Quantum Logic</h5><p>Superposition &amp; state-vector logic in quantum mechanics.</p></div>
       </a>
     </div>
@@ -584,23 +628,23 @@
     <h4 class="sim-group-title"><i class="fas fa-calculator" style="color:var(--brass); margin-right:6px;"></i>Mathematics &amp; Computing Tools</h4>
     <div class="sim-grid">
       <a class="sim-card" href="https://abhishekazadprince.github.io/Calculus/" target="_blank">
-        <div class="icon-box"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#14192B"/><path d="M10,85 L10,12" stroke="#3A4058" stroke-width="0.8"/><path d="M10,85 L92,85" stroke="#3A4058" stroke-width="0.8"/><path d="M14,80 C35,80 42,18 68,20 C82,21 88,40 92,32" fill="none" stroke="var(--brass-soft)" stroke-width="1.3"/><circle r="2.6" fill="var(--red)"><animateMotion dur="3s" repeatCount="indefinite" path="M14,80 C35,80 42,18 68,20 C82,21 88,40 92,32"/></circle></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 100 100"><path d="M10,85 L10,12" stroke="#3A4058" stroke-width="0.8"/><path d="M10,85 L92,85" stroke="#3A4058" stroke-width="0.8"/><path d="M14,80 C35,80 42,18 68,20 C82,21 88,40 92,32" fill="none" stroke="var(--brass)" stroke-width="1.3"/><circle r="2.6" fill="var(--red)"><animateMotion dur="3s" repeatCount="indefinite" path="M14,80 C35,80 42,18 68,20 C82,21 88,40 92,32"/></circle></svg></div>
         <div><h5>Calculus Concepts</h5><p>Visualizing limits, derivatives and integrals.</p></div>
       </a>
       <a class="sim-card" href="https://abhishekazadprince.github.io/Vector/" target="_blank">
-        <div class="icon-box"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#14192B"/><circle cx="50" cy="52" r="2" fill="#EDE9DD"/><line x1="50" y1="52" x2="22" y2="20" stroke="#EDE9DD" stroke-width="1.4"/><line x1="50" y1="52" x2="64" y2="86" stroke="var(--red)" stroke-width="1.4"/><g><line x1="50" y1="52" x2="84" y2="34" stroke="var(--brass-soft)" stroke-width="1.4"/><animateTransform attributeName="transform" type="rotate" values="-7 50 52;7 50 52;-7 50 52" dur="3s" repeatCount="indefinite"/></g></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 100 100"><circle cx="50" cy="52" r="2" fill="var(--ink)"/><line x1="50" y1="52" x2="22" y2="20" stroke="var(--ink)" stroke-width="1.4"/><line x1="50" y1="52" x2="64" y2="86" stroke="var(--red)" stroke-width="1.4"/><g><line x1="50" y1="52" x2="84" y2="34" stroke="var(--brass)" stroke-width="1.4"/><animateTransform attributeName="transform" type="rotate" values="-7 50 52;7 50 52;-7 50 52" dur="3s" repeatCount="indefinite"/></g></svg></div>
         <div><h5>Vector Algebra</h5><p>3D vector operations and transformations.</p></div>
       </a>
       <a class="sim-card" href="https://abhishekazadprince.github.io/Polynomial/" target="_blank">
-        <div class="icon-box"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#14192B"/><path d="M8,20 L8,80 L92,80" stroke="#3A4058" stroke-width="0.8"/><path d="M12,74 C30,10 50,90 68,26 C78,-4 86,50 92,40" fill="none" stroke="var(--brass-soft)" stroke-width="1.3"/><line y1="20" y2="80" stroke="var(--red)" stroke-width="1" stroke-dasharray="2 2"><animate attributeName="x1" values="20;80;20" dur="3s" repeatCount="indefinite"/><animate attributeName="x2" values="20;80;20" dur="3s" repeatCount="indefinite"/></line></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 100 100"><path d="M8,20 L8,80 L92,80" stroke="#3A4058" stroke-width="0.8"/><path d="M12,74 C30,10 50,90 68,26 C78,-4 86,50 92,40" fill="none" stroke="var(--brass)" stroke-width="1.3"/><line y1="20" y2="80" stroke="var(--red)" stroke-width="1" stroke-dasharray="2 2"><animate attributeName="x1" values="20;80;20" dur="3s" repeatCount="indefinite"/><animate attributeName="x2" values="20;80;20" dur="3s" repeatCount="indefinite"/></line></svg></div>
         <div><h5>Polynomial Order</h5><p>Degree of an equation — linear, quadratic &amp; higher-order curves.</p></div>
       </a>
       <a class="sim-card" href="https://abhishekazadprince.github.io/Order/" target="_blank">
-        <div class="icon-box"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#14192B"/><circle cx="16" cy="50" r="6" fill="var(--red)"><animate attributeName="opacity" values="1;1;0.25;0.25" keyTimes="0;0.25;0.3;1" dur="2.4s" repeatCount="indefinite"/></circle><circle cx="42" cy="50" r="6" fill="#EDE9DD"><animate attributeName="opacity" values="0.25;1;1;0.25" keyTimes="0;0.25;0.5;0.55" dur="2.4s" repeatCount="indefinite"/></circle><circle cx="68" cy="50" r="6" fill="var(--brass-soft)"><animate attributeName="opacity" values="0.25;0.25;1;1;0.25" keyTimes="0;0.5;0.55;0.75;0.8" dur="2.4s" repeatCount="indefinite"/></circle><circle cx="92" cy="50" r="4" fill="#3A4058"><animate attributeName="opacity" values="0.25;0.25;1;1" keyTimes="0;0.75;0.8;1" dur="2.4s" repeatCount="indefinite"/></circle><line x1="16" y1="50" x2="92" y2="50" stroke="#3A4058" stroke-width="0.8" stroke-dasharray="1.5 3"/></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 100 100"><circle cx="16" cy="50" r="6" fill="var(--red)"><animate attributeName="opacity" values="1;1;0.25;0.25" keyTimes="0;0.25;0.3;1" dur="2.4s" repeatCount="indefinite"/></circle><circle cx="42" cy="50" r="6" fill="var(--ink)"><animate attributeName="opacity" values="0.25;1;1;0.25" keyTimes="0;0.25;0.5;0.55" dur="2.4s" repeatCount="indefinite"/></circle><circle cx="68" cy="50" r="6" fill="var(--brass-soft)"><animate attributeName="opacity" values="0.25;0.25;1;1;0.25" keyTimes="0;0.5;0.55;0.75;0.8" dur="2.4s" repeatCount="indefinite"/></circle><circle cx="92" cy="50" r="4" fill="#3A4058"><animate attributeName="opacity" values="0.25;0.25;1;1" keyTimes="0;0.75;0.8;1" dur="2.4s" repeatCount="indefinite"/></circle><line x1="16" y1="50" x2="92" y2="50" stroke="#3A4058" stroke-width="0.8" stroke-dasharray="1.5 3"/></svg></div>
         <div><h5>Order</h5><p>Sequencing &amp; term-by-term series behaviour.</p></div>
       </a>
       <a class="sim-card" href="https://abhishekazadprince.github.io/ComputationalGeometry/" target="_blank">
-        <div class="icon-box"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#14192B"/><polygon points="50,16 84,40 70,80 30,80 16,40" fill="none" stroke="var(--brass-soft)" stroke-width="1.2"/><circle r="2.6" fill="var(--red)"><animateMotion dur="3.4s" repeatCount="indefinite" path="M50,16 L84,40 L70,80 L30,80 L16,40 Z"/></circle></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 100 100"><polygon points="50,16 84,40 70,80 30,80 16,40" fill="none" stroke="var(--brass)" stroke-width="1.2"/><circle r="2.6" fill="var(--red)"><animateMotion dur="3.4s" repeatCount="indefinite" path="M50,16 L84,40 L70,80 L30,80 L16,40 Z"/></circle></svg></div>
         <div><h5>Computational Geometry</h5><p>Algorithmic geometry — convex hulls, polygons &amp; spatial structures.</p></div>
       </a>
     </div>
@@ -608,15 +652,15 @@
     <h4 class="sim-group-title"><i class="fas fa-flask" style="color:var(--brass); margin-right:6px;"></i>Properties of Matter &amp; Practical Physics</h4>
     <div class="sim-grid" style="margin-bottom:32px;">
       <a class="sim-card" href="https://abhishekazadprince.github.io/Airflow/" target="_blank">
-        <div class="icon-box"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#14192B"/><path d="M8,38 Q30,38 34,30 T60,30" fill="none" stroke="var(--brass-soft)" stroke-width="1.2"><animate attributeName="stroke-dashoffset" from="0" to="-20" dur="1.6s" repeatCount="indefinite"/><animate attributeName="stroke-dasharray" values="6 4" dur="1s" repeatCount="indefinite"/></path><path d="M8,54 Q34,54 40,50 T74,50" fill="none" stroke="#EDE9DD" stroke-width="1.2" stroke-dasharray="6 4"><animate attributeName="stroke-dashoffset" from="0" to="-20" dur="1.4s" repeatCount="indefinite"/></path><path d="M8,70 Q28,70 32,66 T58,66" fill="none" stroke="var(--red)" stroke-width="1.1" stroke-dasharray="5 4"><animate attributeName="stroke-dashoffset" from="0" to="-18" dur="1.8s" repeatCount="indefinite"/></path><ellipse cx="70" cy="50" rx="12" ry="24" fill="#3A4058" opacity="0.5"/></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 100 100"><path d="M8,38 Q30,38 34,30 T60,30" fill="none" stroke="var(--brass)" stroke-width="1.2"><animate attributeName="stroke-dashoffset" from="0" to="-20" dur="1.6s" repeatCount="indefinite"/><animate attributeName="stroke-dasharray" values="6 4" dur="1s" repeatCount="indefinite"/></path><path d="M8,54 Q34,54 40,50 T74,50" fill="none" stroke="var(--ink)" stroke-width="1.2" stroke-dasharray="6 4"><animate attributeName="stroke-dashoffset" from="0" to="-20" dur="1.4s" repeatCount="indefinite"/></path><path d="M8,70 Q28,70 32,66 T58,66" fill="none" stroke="var(--red)" stroke-width="1.1" stroke-dasharray="5 4"><animate attributeName="stroke-dashoffset" from="0" to="-18" dur="1.8s" repeatCount="indefinite"/></path><ellipse cx="70" cy="50" rx="12" ry="24" fill="#3A4058" opacity="0.5"/></svg></div>
         <div><h5>Airflow</h5><p>Streamline flow, Bernoulli's principle &amp; fluid dynamics.</p></div>
       </a>
       <a class="sim-card" href="https://abhishekazadprince.github.io/Shock/" target="_blank">
-        <div class="icon-box"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#14192B"/><circle cx="50" cy="50" r="4" fill="var(--red)"/><circle cx="50" cy="50" r="14" fill="none" stroke="var(--brass-soft)" stroke-width="1.2"><animate attributeName="r" values="6;40" dur="1.8s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0" dur="1.8s" repeatCount="indefinite"/></circle><circle cx="50" cy="50" r="14" fill="none" stroke="#EDE9DD" stroke-width="1" begin="0.6s"><animate attributeName="r" values="6;40" dur="1.8s" begin="0.6s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0" dur="1.8s" begin="0.6s" repeatCount="indefinite"/></circle></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="4" fill="var(--red)"/><circle cx="50" cy="50" r="14" fill="none" stroke="var(--brass)" stroke-width="1.2"><animate attributeName="r" values="6;40" dur="1.8s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0" dur="1.8s" repeatCount="indefinite"/></circle><circle cx="50" cy="50" r="14" fill="none" stroke="var(--ink)" stroke-width="1" begin="0.6s"><animate attributeName="r" values="6;40" dur="1.8s" begin="0.6s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0" dur="1.8s" begin="0.6s" repeatCount="indefinite"/></circle></svg></div>
         <div><h5>Shock</h5><p>Shock waves &amp; discontinuous pressure-front propagation.</p></div>
       </a>
       <a class="sim-card" href="https://abhishekazadprince.github.io/Vernier/" target="_blank">
-        <div class="icon-box"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#14192B"/><line x1="8" y1="40" x2="92" y2="40" stroke="#EDE9DD" stroke-width="1.1"/><line x1="14" y1="35" x2="14" y2="45" stroke="#EDE9DD" stroke-width="0.8"/><line x1="30" y1="35" x2="30" y2="45" stroke="#EDE9DD" stroke-width="0.8"/><line x1="46" y1="35" x2="46" y2="45" stroke="#EDE9DD" stroke-width="0.8"/><line x1="62" y1="35" x2="62" y2="45" stroke="#EDE9DD" stroke-width="0.8"/><line x1="78" y1="35" x2="78" y2="45" stroke="#EDE9DD" stroke-width="0.8"/><g stroke="var(--red)" stroke-width="0.8"><line x1="20" y1="55" x2="20" y2="63"/><line x1="26" y1="55" x2="26" y2="63"/><line x1="32" y1="55" x2="32" y2="63"/><line x1="38" y1="55" x2="38" y2="63"/><animateTransform attributeName="transform" type="translate" values="0 0;12 0;0 0" dur="2.6s" repeatCount="indefinite"/></g></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 100 100"><line x1="8" y1="40" x2="92" y2="40" stroke="var(--ink)" stroke-width="1.1"/><line x1="14" y1="35" x2="14" y2="45" stroke="var(--ink)" stroke-width="0.8"/><line x1="30" y1="35" x2="30" y2="45" stroke="var(--ink)" stroke-width="0.8"/><line x1="46" y1="35" x2="46" y2="45" stroke="var(--ink)" stroke-width="0.8"/><line x1="62" y1="35" x2="62" y2="45" stroke="var(--ink)" stroke-width="0.8"/><line x1="78" y1="35" x2="78" y2="45" stroke="var(--ink)" stroke-width="0.8"/><g stroke="var(--red)" stroke-width="0.8"><line x1="20" y1="55" x2="20" y2="63"/><line x1="26" y1="55" x2="26" y2="63"/><line x1="32" y1="55" x2="32" y2="63"/><line x1="38" y1="55" x2="38" y2="63"/><animateTransform attributeName="transform" type="translate" values="0 0;12 0;0 0" dur="2.6s" repeatCount="indefinite"/></g></svg></div>
         <div><h5>Vernier</h5><p>Vernier caliper least count &amp; precision measurement.</p></div>
       </a>
     </div>
@@ -678,6 +722,59 @@
   </div>
 </footer>
 
-<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+<button class="back-top" id="backTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* Mobile menu toggle */
+const mobileBtn = document.getElementById('mobileBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+mobileBtn.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('open');
+  mobileBtn.setAttribute('aria-expanded', isOpen);
+  mobileBtn.innerHTML = isOpen ? '<i class="fas fa-xmark"></i>' : '<i class="fas fa-bars"></i>';
+});
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  mobileMenu.classList.remove('open');
+  mobileBtn.setAttribute('aria-expanded', 'false');
+  mobileBtn.innerHTML = '<i class="fas fa-bars"></i>';
+}));
+
+/* Back to top button */
+const backTop = document.getElementById('backTop');
+window.addEventListener('scroll', () => {
+  backTop.classList.toggle('show', window.scrollY > 480);
+}, { passive: true });
+backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+/* Active nav-link highlighting */
+const navLinks = document.querySelectorAll('nav.links a');
+const sections = Array.from(navLinks).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = '#' + entry.target.id;
+      navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
+    }
+  });
+}, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+sections.forEach(s => navObserver.observe(s));
+
+/* Scroll-reveal animations */
+const revealTargets = document.querySelectorAll(
+  '.section-head, .approach-card, .tl-item, .edu-card, .book-card, .sim-card, .flagship-card, .video-card, .mentor-note, .toolkit-box'
+);
+revealTargets.forEach(el => el.classList.add('reveal'));
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in-view');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+revealTargets.forEach(el => revealObserver.observe(el));
+</script>
 </body>
 </html>
